@@ -1,0 +1,758 @@
+ [
+  {
+  "parent_id": "0",
+  "id": "1",
+  "label": "Rate Sheets",
+  "folder": "1",
+  "sort": "1",
+  "children": {
+  "4": {
+  "parent_id": "1",
+  "id": "4",
+  "label": "Mortgage Loan Rates",
+  "folder": "0",
+  "sort": "0"
+  },
+  "3": {
+  "parent_id": "1",
+  "id": "3",
+  "label": "Consumer Loan Rates",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "15162.pdf"
+              }
+              ]
+  },
+  "2": {
+  "parent_id": "1",
+  "id": "2",
+  "label": "Checking\/Savings Rates",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "10108.pdf"
+              }
+              ]
+  }
+  }
+  },
+  {
+  "parent_id": "0",
+  "id": "5",
+  "label": "Checking & Savings",
+  "folder": "1",
+  "sort": "2",
+  "children": {
+  "6": {
+  "parent_id": "5",
+  "id": "6",
+  "label": "Checking",
+  "folder": "1",
+  "sort": "10"
+  },
+  "11": {
+  "parent_id": "5",
+  "id": "11",
+  "label": "Savings",
+  "folder": "1",
+  "sort": "11",
+  "children": {
+  "13": {
+  "parent_id": "11",
+  "id": "13",
+  "label": "eSavings",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "65702.pdf"
+              }
+              ]
+  },
+  "16": {
+  "parent_id": "11",
+  "id": "16",
+  "label": "Club Account",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "80864.pdf"
+              }
+              ]
+  },
+  "14": {
+  "parent_id": "11",
+  "id": "14",
+  "label": "Special Savings",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "70756.pdf"
+              }
+              ]
+  },
+  "17": {
+  "parent_id": "11",
+  "id": "17",
+  "label": "Share Certificates",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "85918.pdf"
+              }
+              ]
+  },
+  "12": {
+  "parent_id": "11",
+  "id": "12",
+  "label": "Regular",
+  "folder": "0",
+  "sort": "0"
+  },
+  "15": {
+  "parent_id": "11",
+  "id": "15",
+  "label": "Money Market",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "75810.pdf"
+              }
+              ]
+  },
+  "18": {
+  "parent_id": "11",
+  "id": "18",
+  "label": "Courtesy Pay",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "90972.pdf"
+              }
+              ]
+  }
+  }
+  },
+  "19": {
+  "parent_id": "5",
+  "id": "19",
+  "label": "IRAs",
+  "folder": "1",
+  "sort": "12",
+  "children": {
+  "22": {
+  "parent_id": "19",
+  "id": "22",
+  "label": "Coverdell",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "111188.pdf"
+              }
+              ]
+  },
+  "21": {
+  "parent_id": "19",
+  "id": "21",
+  "label": "Roth IRA",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "106134.pdf"
+              }
+              ]
+  },
+  "20": {
+  "parent_id": "19",
+  "id": "20",
+  "label": "Traditional IRA",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "101080.pdf"
+              }
+              ]
+  },
+  "23": {
+  "parent_id": "19",
+  "id": "23",
+  "label": "IRS Savings",
+  "folder": "0",
+  "sort": "0"
+  }
+  }
+  }
+  }
+  },
+  {
+  "parent_id": "0",
+  "id": "24",
+  "label": "Loans & Credit Cards",
+  "folder": "1",
+  "sort": "3",
+  "children": {
+  "34": {
+  "parent_id": "24",
+  "id": "34",
+  "label": "Vehicle Loan",
+  "folder": "1",
+  "sort": "0",
+  "children": {
+  "40": {
+  "parent_id": "34",
+  "id": "40",
+  "label": "Snowmobile & Personal Wat",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "202160.pdf"
+              }
+              ]
+  },
+  "37": {
+  "parent_id": "34",
+  "id": "37",
+  "label": "Boat",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "186998.pdf"
+              }
+              ]
+  },
+  "36": {
+  "parent_id": "34",
+  "id": "36",
+  "label": "Motorcycle",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "181944.pdf"
+              }
+              ]
+  },
+  "39": {
+  "parent_id": "34",
+  "id": "39",
+  "label": "Airplane",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "197106.pdf"
+              }
+              ]
+  },
+  "35": {
+  "parent_id": "34",
+  "id": "35",
+  "label": "Auto",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "176890.pdf"
+              }
+              ]
+  },
+  "38": {
+  "parent_id": "34",
+  "id": "38",
+  "label": "Rec Vehicle",
+  "folder": "0",
+  "sort": "0"
+  }
+  }
+  },
+  "25": {
+  "parent_id": "24",
+  "id": "25",
+  "label": "Personal Loans",
+  "folder": "1",
+  "sort": "0"
+  },
+  "29": {
+  "parent_id": "24",
+  "id": "29",
+  "label": "Short Term Loans",
+  "folder": "1",
+  "sort": "0",
+  "children": {
+  "30": {
+  "parent_id": "29",
+  "id": "30",
+  "label": "Quick Loan",
+  "folder": "0",
+  "sort": "0"
+  },
+  "33": {
+  "parent_id": "29",
+  "id": "33",
+  "label": "Payday Loan",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "166782.pdf"
+              }
+              ]
+  },
+  "32": {
+  "parent_id": "29",
+  "id": "32",
+  "label": "Credit Rebuilder Loan",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "161728.pdf"
+              }
+              ]
+  },
+  "31": {
+  "parent_id": "29",
+  "id": "31",
+  "label": "Advancement Loan",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "156674.pdf"
+              }
+              ]
+  }
+  }
+  },
+  "41": {
+  "parent_id": "24",
+  "id": "41",
+  "label": "Home Loans",
+  "folder": "1",
+  "sort": "0",
+  "children": {
+  "46": {
+  "parent_id": "41",
+  "id": "46",
+  "label": "Home Equity Loan",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "232484.pdf"
+              }
+              ]
+  },
+  "42": {
+  "parent_id": "41",
+  "id": "42",
+  "label": "Down Payment Helper",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "212268.pdf"
+              }
+              ]
+  },
+  "45": {
+  "parent_id": "41",
+  "id": "45",
+  "label": "Flex-Rate Home Equity Lin",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "227430.pdf"
+              }
+              ]
+  },
+  "44": {
+  "parent_id": "41",
+  "id": "44",
+  "label": "Adjustable-Rate",
+  "folder": "0",
+  "sort": "0"
+  },
+  "47": {
+  "parent_id": "41",
+  "id": "47",
+  "label": "Realtor Rebate Program",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "237538.pdf"
+              }
+              ]
+  },
+  "43": {
+  "parent_id": "41",
+  "id": "43",
+  "label": "Fixed-Rate",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "217322.pdf"
+              }
+              ]
+  }
+  }
+  },
+  "48": {
+  "parent_id": "24",
+  "id": "48",
+  "label": "Credit Cards",
+  "folder": "1",
+  "sort": "0",
+  "children": {
+  "50": {
+  "parent_id": "48",
+  "id": "50",
+  "label": "Variable-Rate",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "252700.pdf"
+              }
+              ]
+  },
+  "49": {
+  "parent_id": "48",
+  "id": "49",
+  "label": "Fixed-Rate",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "247646.pdf"
+              }
+              ]
+  },
+  "51": {
+  "parent_id": "48",
+  "id": "51",
+  "label": "Rewards",
+  "folder": "0",
+  "sort": "0"
+  }
+  }
+  }
+  }
+  },
+  {
+  "parent_id": "0",
+  "id": "52",
+  "label": "eServices",
+  "folder": "1",
+  "sort": "4",
+  "children": {
+  "55": {
+  "parent_id": "52",
+  "id": "55",
+  "label": "eStatements",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "277970.pdf"
+              }
+              ]
+  },
+  "58": {
+  "parent_id": "52",
+  "id": "58",
+  "label": "eText Banking",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "293132.pdf"
+              }
+              ]
+  },
+  "53": {
+  "parent_id": "52",
+  "id": "53",
+  "label": "eBanking",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "267862.pdf"
+              }
+              ]
+  },
+  "56": {
+  "parent_id": "52",
+  "id": "56",
+  "label": "eDeposits",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "283024.pdf"
+              }
+              ]
+  },
+  "59": {
+  "parent_id": "52",
+  "id": "59",
+  "label": "Skip-a-pay",
+  "folder": "0",
+  "sort": "0"
+  },
+  "54": {
+  "parent_id": "52",
+  "id": "54",
+  "label": "ePay",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "272916.pdf"
+              }
+              ]
+  },
+  "57": {
+  "parent_id": "52",
+  "id": "57",
+  "label": "eMobile Banking",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "288078.pdf"
+              }
+              ]
+  }
+  }
+  },
+  {
+  "parent_id": "0",
+  "id": "60",
+  "label": "Investments\/Insurance",
+  "folder": "1",
+  "sort": "5"
+  },
+  {
+  "parent_id": "0",
+  "id": "61",
+  "label": "Business",
+  "folder": "1",
+  "sort": "6",
+  "children": {
+  "66": {
+  "parent_id": "61",
+  "id": "66",
+  "label": "Business Loans",
+  "folder": "1",
+  "sort": "0",
+  "children": {
+  "69": {
+  "parent_id": "66",
+  "id": "69",
+  "label": "Equipment Term",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "348726.pdf"
+              }
+              ]
+  },
+  "70": {
+  "parent_id": "66",
+  "id": "70",
+  "label": "Commercial Real Estate",
+  "folder": "0",
+  "sort": "0"
+  },
+  "68": {
+  "parent_id": "66",
+  "id": "68",
+  "label": "Secured Lin of Credit",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "343672.pdf"
+              }
+              ]
+  },
+  "67": {
+  "parent_id": "66",
+  "id": "67",
+  "label": "Unsecured Line of Credit",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "338618.pdf"
+              }
+              ]
+  }
+  }
+  },
+  "71": {
+  "parent_id": "61",
+  "id": "71",
+  "label": "Business Credit Cards",
+  "folder": "1",
+  "sort": "0",
+  "children": {
+  "72": {
+  "parent_id": "71",
+  "id": "72",
+  "label": "Visa Platinum",
+  "folder": "0",
+  "sort": "0"
+  },
+  "73": {
+  "parent_id": "71",
+  "id": "73",
+  "label": "Business Rewards",
+  "folder": "0",
+  "sort": "0",
+  "content": [
+              {
+              "updated": "0000-00-00 00:00:00",
+              "content_type": "application\/pdf ",
+              "url": "368942.pdf"
+              }
+              ]
+  }
+  }
+  },
+  "62": {
+  "parent_id": "61",
+  "id": "62",
+  "label": "Business Checking\/Savings",
+  "folder": "1",
+  "sort": "0"
+  }
+  }
+  },
+  {
+  "parent_id": "0",
+  "id": "74",
+  "label": "Special Offers",
+  "folder": "1",
+  "sort": "7",
+  "children": [
+               {
+               "parent_id": "74",
+               "id": "76",
+               "label": "Rewardiness",
+               "folder": "0",
+               "sort": "0",
+               "content": [
+                           {
+                           "updated": "0000-00-00 00:00:00",
+                           "content_type": "application\/pdf ",
+                           "url": "384104.pdf"
+                           }
+                           ]
+               },
+               {
+               "parent_id": "74",
+               "id": "75",
+               "label": "Auto 0.74%",
+               "folder": "0",
+               "sort": "0",
+               "content": [
+                           {
+                           "updated": "0000-00-00 00:00:00",
+                           "content_type": "application\/pdf ",
+                           "url": "379050.pdf"
+                           }
+                           ]
+               }
+               ]
+  }
+  ]
