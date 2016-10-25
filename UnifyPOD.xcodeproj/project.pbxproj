@@ -23,8 +23,6 @@
 		50D6E1A31C565BB200D2AB95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50D6E1A11C565BB200D2AB95 /* Main.storyboard */; };
 		50D6E1A51C565BB200D2AB95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50D6E1A41C565BB200D2AB95 /* Assets.xcassets */; };
 		50D6E1A81C565BB200D2AB95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50D6E1A61C565BB200D2AB95 /* LaunchScreen.storyboard */; };
-		50D6E1B31C565BB200D2AB95 /* UnifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6E1B21C565BB200D2AB95 /* UnifyTests.swift */; };
-		50D6E1BE1C565BB200D2AB95 /* UnifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6E1BD1C565BB200D2AB95 /* UnifyUITests.swift */; };
 		50FB9F481C565F0400FABC78 /* KioskApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB9F461C565F0400FABC78 /* KioskApplication.swift */; };
 		50FB9F491C565F0400FABC78 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB9F471C565F0400FABC78 /* main.swift */; };
 		50FB9F4B1C56603D00FABC78 /* PODClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB9F4A1C56603D00FABC78 /* PODClient.swift */; };
@@ -41,10 +39,10 @@
 		50FB9F621C57E40500FABC78 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB9F611C57E40500FABC78 /* Content.swift */; };
 		50FB9F641C57EB0900FABC78 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 50FB9F631C57EB0900FABC78 /* test.json */; };
 		50FB9F661C5916DC00FABC78 /* 1Sum_Attract.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 50FB9F651C5916DC00FABC78 /* 1Sum_Attract.mp4 */; };
-		520DBD2A71153656C27AB8A6 /* Pods_UnifyPOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769AE097A07A2BF6E09208E /* Pods_UnifyPOD.framework */; };
-		7548842A1DBEC8BB00D11BF4 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754884291DBEC8BB00D11BF4 /* UserNotifications.framework */; };
-		7548842C1DBEC8C700D11BF4 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7548842B1DBEC8C700D11BF4 /* NotificationCenter.framework */; };
-		F4E6A524937BCBB11A27B2FB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D28B891251692E0FA63F9D /* Pods.framework */; };
+		7509AD861DBF0B6800AFEC2D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */; };
+		7509AD871DBF0B7A00AFEC2D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */; };
+		7509AD881DBF0B7A00AFEC2D /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		818E58E724B582AF75661238 /* Pods_UnifyPOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCE62B9A6000ACB9B31794D /* Pods_UnifyPOD.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,8 +62,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7509AD891DBF0B7B00AFEC2D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7509AD881DBF0B7A00AFEC2D /* SwiftyJSON.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		23D28B891251692E0FA63F9D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		255C95FA1C63ABAA005DC0E9 /* Brandon_light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_light.otf; sourceTree = "<group>"; };
 		255C95FD1C653F0A005DC0E9 /* Miller Type Foundry - Swagg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Miller Type Foundry - Swagg.otf"; sourceTree = "<group>"; };
 		255C95FF1C65450E005DC0E9 /* Brandon_reg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_reg.otf; sourceTree = "<group>"; };
@@ -85,11 +96,7 @@
 		50D6E1A71C565BB200D2AB95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50D6E1A91C565BB200D2AB95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50D6E1AE1C565BB200D2AB95 /* UnifyPOD.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnifyPOD.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		50D6E1B21C565BB200D2AB95 /* UnifyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifyTests.swift; sourceTree = "<group>"; };
-		50D6E1B41C565BB200D2AB95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50D6E1B91C565BB200D2AB95 /* UnifyPOD.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnifyPOD.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		50D6E1BD1C565BB200D2AB95 /* UnifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifyUITests.swift; sourceTree = "<group>"; };
-		50D6E1BF1C565BB200D2AB95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50FB9F461C565F0400FABC78 /* KioskApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KioskApplication.swift; sourceTree = "<group>"; };
 		50FB9F471C565F0400FABC78 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		50FB9F4A1C56603D00FABC78 /* PODClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PODClient.swift; sourceTree = "<group>"; };
@@ -106,12 +113,9 @@
 		50FB9F611C57E40500FABC78 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		50FB9F631C57EB0900FABC78 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		50FB9F651C5916DC00FABC78 /* 1Sum_Attract.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1Sum_Attract.mp4; sourceTree = "<group>"; };
-		6769AE097A07A2BF6E09208E /* Pods_UnifyPOD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnifyPOD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		754884291DBEC8BB00D11BF4 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		7548842B1DBEC8C700D11BF4 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/UnifyPOD-astpkvtsifwrlrcqjloiiogbahna/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		76E2668DA7EADABB9B88BFDA /* Pods-UnifyPOD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnifyPOD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnifyPOD/Pods-UnifyPOD.debug.xcconfig"; sourceTree = "<group>"; };
-		9A258E1BE67A41C4595ADCEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		DF2CD599FF0ED43D05BD2626 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BCCE62B9A6000ACB9B31794D /* Pods_UnifyPOD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnifyPOD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,10 +123,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7548842C1DBEC8C700D11BF4 /* NotificationCenter.framework in Frameworks */,
-				7548842A1DBEC8BB00D11BF4 /* UserNotifications.framework in Frameworks */,
-				F4E6A524937BCBB11A27B2FB /* Pods.framework in Frameworks */,
-				520DBD2A71153656C27AB8A6 /* Pods_UnifyPOD.framework in Frameworks */,
+				7509AD861DBF0B6800AFEC2D /* SwiftyJSON.framework in Frameworks */,
+				818E58E724B582AF75661238 /* Pods_UnifyPOD.framework in Frameworks */,
+				7509AD871DBF0B7A00AFEC2D /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,8 +149,6 @@
 		15F223BFE8B9A303C3BA5638 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DF2CD599FF0ED43D05BD2626 /* Pods.debug.xcconfig */,
-				9A258E1BE67A41C4595ADCEB /* Pods.release.xcconfig */,
 				76E2668DA7EADABB9B88BFDA /* Pods-UnifyPOD.debug.xcconfig */,
 				2C205E0E09880D50FC6FCF36 /* Pods-UnifyPOD.release.xcconfig */,
 			);
@@ -194,10 +195,8 @@
 		3F2EB099DCAEDE4FF7552314 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7548842B1DBEC8C700D11BF4 /* NotificationCenter.framework */,
-				754884291DBEC8BB00D11BF4 /* UserNotifications.framework */,
-				23D28B891251692E0FA63F9D /* Pods.framework */,
-				6769AE097A07A2BF6E09208E /* Pods_UnifyPOD.framework */,
+				7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */,
+				BCCE62B9A6000ACB9B31794D /* Pods_UnifyPOD.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -206,8 +205,6 @@
 			isa = PBXGroup;
 			children = (
 				50D6E19C1C565BB200D2AB95 /* Unify */,
-				50D6E1B11C565BB200D2AB95 /* UnifyTests */,
-				50D6E1BC1C565BB200D2AB95 /* UnifyUITests */,
 				50D6E19B1C565BB200D2AB95 /* Products */,
 				15F223BFE8B9A303C3BA5638 /* Pods */,
 				3F2EB099DCAEDE4FF7552314 /* Frameworks */,
@@ -241,24 +238,6 @@
 				25F48ADD1C6B8E3700D0E3CE /* UnifyBridgingHeader.h */,
 			);
 			path = Unify;
-			sourceTree = "<group>";
-		};
-		50D6E1B11C565BB200D2AB95 /* UnifyTests */ = {
-			isa = PBXGroup;
-			children = (
-				50D6E1B21C565BB200D2AB95 /* UnifyTests.swift */,
-				50D6E1B41C565BB200D2AB95 /* Info.plist */,
-			);
-			path = UnifyTests;
-			sourceTree = "<group>";
-		};
-		50D6E1BC1C565BB200D2AB95 /* UnifyUITests */ = {
-			isa = PBXGroup;
-			children = (
-				50D6E1BD1C565BB200D2AB95 /* UnifyUITests.swift */,
-				50D6E1BF1C565BB200D2AB95 /* Info.plist */,
-			);
-			path = UnifyUITests;
 			sourceTree = "<group>";
 		};
 		50FB9F451C565ED900FABC78 /* Models */ = {
@@ -297,6 +276,7 @@
 				50D6E1981C565BB200D2AB95 /* Resources */,
 				CC440BF81F87165A8B08B196 /* [CP] Embed Pods Frameworks */,
 				48337741A4936A9EFDC45365 /* [CP] Copy Pods Resources */,
+				7509AD891DBF0B7B00AFEC2D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -506,7 +486,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50D6E1B31C565BB200D2AB95 /* UnifyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +493,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50D6E1BE1C565BB200D2AB95 /* UnifyUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,8 +624,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+				);
 				INFOPLIST_FILE = Unify/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adrenaline.printondemand.Unify;
 				PRODUCT_NAME = UnifyPOD;
@@ -664,8 +646,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+				);
 				INFOPLIST_FILE = Unify/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adrenaline.printondemand.Unify;
 				PRODUCT_NAME = UnifyPOD;

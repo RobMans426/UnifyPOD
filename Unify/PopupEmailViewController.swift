@@ -48,7 +48,7 @@ class PopupEmailViewController : BaseViewController {
                 
             } else {
                 
-                PODClient.instance.sendEmail( emailField.text!, documentURL: pdfURL, completion: {(completed:Bool) -> Void in
+                PODClient.instance.sendEmail( recipient: emailField.text!, documentURL: pdfURL, completion: {(completed:Bool) -> Void in
                     
                     if( completed ) {
                         

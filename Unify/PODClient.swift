@@ -321,7 +321,9 @@ class PODClient : NSObject,  URLSessionDelegate {
             }
             
             if( (cat.categories?.count)! > 0 ) {
-                    tasks.append( self.getCategoryDocumentDownloadTasks( cats: cat.categories! ) )
+//                    tasks.append( self.getCategoryDocumentDownloadTasks( cats: cat.categories! ) )
+                tasks.append(contentsOf: self.getCategoryDocumentDownloadTasks(cats: cat.categories!))
+            
             }
         }
         

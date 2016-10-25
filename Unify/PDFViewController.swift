@@ -216,7 +216,7 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
 */
             
             
-            printController.print(to: printer, completionHandler: {(printController:UIPrintInteractionController, completed:Bool, error:NSError?) -> Void in
+            printController.print(to: printer, completionHandler: { (printController, completed, error) in
                 debugPrint("Print Completion Handler")
                 
                 if( !completed ) {
@@ -238,7 +238,6 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
                 
                 self.present(vc, animated: true, completion: {})
             })
-
             
             self.buttonUnselected( printButton )
             

@@ -137,7 +137,7 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
         let printerPicker = UIPrinterPickerController(initiallySelectedPrinter: nil)
         printerPicker.delegate = self
         
-        printerPicker.present(from: CGRect(x: 0, y: 0, width: 0, height: 0), in: self.view, animated: true, completionHandler: {(pickerController:UIPrinterPickerController, completed:Bool, error:NSError?) -> Void in
+        printerPicker.present(from: CGRect(x: 0, y: 0, width: 0, height: 0), in: self.view, animated: true, completionHandler: {(pickerController, completed, error)  in
             
             if( completed ) {
                 debugPrint( pickerController.selectedPrinter )
@@ -161,7 +161,7 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
                 
                 printController.printingItem = testPDFUrl
                 
-                printController.print(to: self.printer!, completionHandler: {(printController:UIPrintInteractionController, completed:Bool, error:NSError?) -> Void in
+                printController.print(to: self.printer!, completionHandler: {(printController, completed, error) in
                     debugPrint("Print Completion Handler")
                     
                     if( !completed ) {

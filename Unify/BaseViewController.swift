@@ -50,8 +50,10 @@ class BaseViewController: UIViewController {
         debugPrint("Add GA Hit")
         let tracker = GAI.sharedInstance().defaultTracker
         tracker?.set(kGAIScreenName, value: trackedName )
-        let screenView = GAIDictionaryBuilder.createScreenView().build() as [AnyHashable: Any]
-        tracker.send( screenView )
+//        let screenView = GAIDictionaryBuilder.createScreenView().build() as [AnyHashable: Any]
+//        tracker.send( screenView )
+        let screenView = GAIDictionaryBuilder.createScreenView().build() as NSDictionary? as? [AnyHashable: Any] ?? [:]
+        tracker?.send( screenView )
         
         //dispatch now....
         GAI.sharedInstance().dispatch()
@@ -60,7 +62,7 @@ class BaseViewController: UIViewController {
     func startAttractLoop() {
         
         //only start if we are showing
-        if( !self.isViewLoaded || self.view.window == false ) {
+        if( !self.isViewLoaded || /*self.view.window == false */ self.view.window != nil!) {
             debugPrint("View not viewable")
             return
         }

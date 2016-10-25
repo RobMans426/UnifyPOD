@@ -1,4 +1,4 @@
-# platform :ios, "9.2"
+#platform :ios, "10.0.2"
 
 use_frameworks!
 target 'UnifyPOD' do
