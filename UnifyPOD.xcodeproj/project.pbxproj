@@ -40,7 +40,6 @@
 		50FB9F641C57EB0900FABC78 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 50FB9F631C57EB0900FABC78 /* test.json */; };
 		50FB9F661C5916DC00FABC78 /* 1Sum_Attract.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 50FB9F651C5916DC00FABC78 /* 1Sum_Attract.mp4 */; };
 		7509AD861DBF0B6800AFEC2D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */; };
-		7509AD871DBF0B7A00AFEC2D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */; };
 		7509AD881DBF0B7A00AFEC2D /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		818E58E724B582AF75661238 /* Pods_UnifyPOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCE62B9A6000ACB9B31794D /* Pods_UnifyPOD.framework */; };
 /* End PBXBuildFile section */
@@ -125,7 +124,6 @@
 			files = (
 				7509AD861DBF0B6800AFEC2D /* SwiftyJSON.framework in Frameworks */,
 				818E58E724B582AF75661238 /* Pods_UnifyPOD.framework in Frameworks */,
-				7509AD871DBF0B7A00AFEC2D /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +328,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Adrenaline;
 				TargetAttributes = {
 					50D6E1991C565BB200D2AB95 = {
@@ -544,8 +542,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -590,8 +590,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -611,6 +613,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = Unify/UnifyBridgingHeader.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -620,6 +623,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76E2668DA7EADABB9B88BFDA /* Pods-UnifyPOD.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -642,6 +646,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C205E0E09880D50FC6FCF36 /* Pods-UnifyPOD.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";

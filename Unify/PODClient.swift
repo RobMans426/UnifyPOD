@@ -8,6 +8,25 @@
 
 import Foundation
 import SwiftyJSON
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l > r
+    default:
+        return rhs < lhs
+    }
+}
 
 class PODClient : NSObject,  URLSessionDelegate {
     
@@ -66,7 +85,7 @@ class PODClient : NSObject,  URLSessionDelegate {
                     let json = JSON(data: data!)
                     
                     //look for status...
-                    if json["status"] != nil {
+                    if json["status"] != JSON.null {
                         if( json["status"] == "failure" ) {
                             completion(false, nil)
                             return;
@@ -320,8 +339,8 @@ class PODClient : NSObject,  URLSessionDelegate {
                 
             }
             
-            if( (cat.categories?.count)! > 0 ) {
-//                    tasks.append( self.getCategoryDocumentDownloadTasks( cats: cat.categories! ) )
+            if( cat.categories?.count > 0 ) {
+
                 tasks.append(contentsOf: self.getCategoryDocumentDownloadTasks(cats: cat.categories!))
             
             }

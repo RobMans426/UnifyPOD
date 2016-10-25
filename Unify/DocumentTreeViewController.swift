@@ -8,26 +8,6 @@
 
 import Foundation
 import UIKit
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
 
 class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -88,7 +68,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         
         self.documentTableView.reloadData();
         
-        if( (displayCategories && self.categories?.count > 4 ) || (!displayCategories && self.content?.count > 4 )) {
+        if( (displayCategories && (self.categories?.count)! > 4 ) || (!displayCategories && (self.content?.count)! > 4 )) {
             
             self.scrollForMoreView.isHidden = false
         } else {
@@ -279,7 +259,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         
         let category = self.categories![(indexPath as NSIndexPath).row]
         
-        if(  category.content == nil && category.categories?.count > 0 ) {
+        if(  category.content == nil && (category.categories?.count)! > 0 ) {
         //if( displayCategories ) {
             
             let category = self.categories![(indexPath as NSIndexPath).row]
@@ -296,7 +276,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         } else if( category.content != nil ) {
             
             //let content = self.content![indexPath.row]
-            let content = category.content!
+//            let content = category.content!
             
             debugPrint( "Tapped For Content \(category.label)" )
             
@@ -309,7 +289,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
             vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
             vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
             
-            let urlPath = "Untitleddocument"  //content.url!
+//            let urlPath = "Untitleddocument"  //content.url!
             let pdfFile = "\(NSTemporaryDirectory())\(category.id!).pdf"
             
             vc.pdfURL = URL(fileURLWithPath: pdfFile)

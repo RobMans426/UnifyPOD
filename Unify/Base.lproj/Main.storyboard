@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -14,14 +16,12 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dashboard" translatesAutoresizingMaskIntoConstraints="NO" id="wOm-3k-C34">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dashboard" translatesAutoresizingMaskIntoConstraints="NO" id="wOm-3k-C34"/>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wOm-3k-C34" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="ccK-4M-UMg"/>
                             <constraint firstItem="wOm-3k-C34" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mfp-U9-xca"/>
@@ -29,12 +29,10 @@
                             <constraint firstItem="wOm-3k-C34" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sko-Yd-mlk"/>
                         </constraints>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="230" y="443"/>
+            <point key="canvasLocation" x="271" y="429"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="As2-fu-EH7">
@@ -45,60 +43,71 @@
                         <viewControllerLayoutGuide type="bottom" id="ZdN-mT-Jvg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2a7-j4-hfx">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICA-Ge-VPp">
-                                <rect key="frame" x="82" y="102" width="611" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICA-Ge-VPp">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="REGION CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgK-Ll-47g">
-                                <rect key="frame" x="82" y="73" width="381" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REGION CODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgK-Ll-47g">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="381" id="IMn-u6-FrM"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="PRINTER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMf-Lm-OXs">
-                                <rect key="frame" x="82" y="186" width="325" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRINTER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMf-Lm-OXs">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="325" id="AST-pA-5G3"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="NO PRINTER SELECTED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3n-Zj-LfX">
-                                <rect key="frame" x="82" y="215" width="521" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO PRINTER SELECTED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3n-Zj-LfX">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4El-GY-ygx">
-                                <rect key="frame" x="611" y="211" width="128" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4El-GY-ygx">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="8fz-da-Tge"/>
+                                </constraints>
                                 <state key="normal" title="CHOOSE PRINTER"/>
                                 <connections>
                                     <action selector="clickPrinter:" destination="QJR-Py-skD" eventType="touchUpInside" id="3p4-NS-nuP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0D-uo-aGS">
-                                <rect key="frame" x="304" y="360" width="166" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0D-uo-aGS">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="166" id="Csm-Wh-S5A"/>
+                                </constraints>
                                 <state key="normal" title="SAVE"/>
                                 <connections>
                                     <action selector="clickSave:" destination="QJR-Py-skD" eventType="touchUpInside" id="YK9-35-bMl"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="F0D-uo-aGS" firstAttribute="centerX" secondItem="2a7-j4-hfx" secondAttribute="centerX" id="2nw-0h-NjJ"/>
+                            <constraint firstItem="4El-GY-ygx" firstAttribute="leading" secondItem="H3n-Zj-LfX" secondAttribute="trailing" constant="8" symbolic="YES" id="4jx-Qe-Tga"/>
                             <constraint firstItem="ICA-Ge-VPp" firstAttribute="centerX" secondItem="2a7-j4-hfx" secondAttribute="centerX" id="7VZ-vi-CHJ"/>
+                            <constraint firstItem="ZdN-mT-Jvg" firstAttribute="top" secondItem="F0D-uo-aGS" secondAttribute="bottom" constant="976" id="CJL-6g-d0M"/>
+                            <constraint firstItem="4El-GY-ygx" firstAttribute="baseline" secondItem="H3n-Zj-LfX" secondAttribute="baseline" id="G2e-Be-Mnj"/>
+                            <constraint firstItem="H3n-Zj-LfX" firstAttribute="top" secondItem="LMf-Lm-OXs" secondAttribute="bottom" constant="8" symbolic="YES" id="T4Z-DO-hfq"/>
                             <constraint firstItem="LMf-Lm-OXs" firstAttribute="leading" secondItem="kgK-Ll-47g" secondAttribute="leading" id="UWf-4j-mVq"/>
+                            <constraint firstItem="LMf-Lm-OXs" firstAttribute="top" secondItem="ICA-Ge-VPp" secondAttribute="bottom" constant="54" id="UhW-9e-oxx"/>
+                            <constraint firstItem="ICA-Ge-VPp" firstAttribute="top" secondItem="kgK-Ll-47g" secondAttribute="bottom" constant="8" symbolic="YES" id="WmP-KL-J6F"/>
                             <constraint firstItem="4El-GY-ygx" firstAttribute="trailing" secondItem="ICA-Ge-VPp" secondAttribute="trailing" id="Zl9-CO-AKq"/>
+                            <constraint firstItem="kgK-Ll-47g" firstAttribute="top" secondItem="COK-h4-O49" secondAttribute="bottom" constant="53" id="cVb-zu-kPG"/>
                             <constraint firstItem="H3n-Zj-LfX" firstAttribute="leading" secondItem="kgK-Ll-47g" secondAttribute="leading" id="cvR-q0-t05"/>
                             <constraint firstItem="kgK-Ll-47g" firstAttribute="leading" secondItem="ICA-Ge-VPp" secondAttribute="leading" id="jqU-SI-H7m"/>
                             <constraint firstItem="ICA-Ge-VPp" firstAttribute="width" secondItem="2a7-j4-hfx" secondAttribute="width" multiplier="0.8" id="mD3-0T-C8m"/>
                         </constraints>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="printerLabel" destination="H3n-Zj-LfX" id="EiA-up-J6e"/>
                         <outlet property="regionIdentifier" destination="ICA-Ge-VPp" id="fg2-Ac-GZ3"/>

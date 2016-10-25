@@ -10,6 +10,25 @@ import Foundation
 import UIKit
 import Google
 import AVFoundation
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l > r
+    default:
+        return rhs < lhs
+    }
+}
 
 class BaseViewController: UIViewController {
     
@@ -62,7 +81,7 @@ class BaseViewController: UIViewController {
     func startAttractLoop() {
         
         //only start if we are showing
-        if( !self.isViewLoaded || /*self.view.window == false */ self.view.window != nil!) {
+        if( !self.isViewLoaded || /*self.view.window == false */ self.view.window == nil) {
             debugPrint("View not viewable")
             return
         }

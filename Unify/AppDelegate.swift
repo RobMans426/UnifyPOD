@@ -8,8 +8,6 @@
 
 import UIKit
 import Google
-import UIKit
-
 
 //not needed as we have our own main
 //@UIApplicationMain
