@@ -8,6 +8,26 @@
 
 import Foundation
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -22,11 +42,11 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
     
     var category : Category?
     
-    private var categories : Array<Category>?
+    fileprivate var categories : Array<Category>?
     
-    private var content : Array<Category>?
+    fileprivate var content : Array<Category>?
     
-    private var displayCategories = true
+    fileprivate var displayCategories = true
     
     override func getGAIName() -> String? {
         
@@ -40,9 +60,9 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
       
     override func viewDidLoad() {
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "appTimeout", name: "KioskApplicationTimeout", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "returnToMain", name: "DocumentTreeReturnToMain", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "closeModals", name: "DocumentTreeCloseModals", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.appTimeout), name: NSNotification.Name(rawValue: "KioskApplicationTimeout"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DocumentTreeViewController.returnToMain), name: NSNotification.Name(rawValue: "DocumentTreeReturnToMain"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DocumentTreeViewController.closeModals), name: NSNotification.Name(rawValue: "DocumentTreeCloseModals"), object: nil)
         
         self.documentTableView.delegate = self
         self.documentTableView.dataSource = self
@@ -54,7 +74,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         if( category == nil ) {
             
             self.categories = PODClient.instance.categories
-            self.backButton.hidden = true
+            self.backButton.isHidden = true
             
         } else {
             
@@ -70,9 +90,9 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         
         if( (displayCategories && self.categories?.count > 4 ) || (!displayCategories && self.content?.count > 4 )) {
             
-            self.scrollForMoreView.hidden = false
+            self.scrollForMoreView.isHidden = false
         } else {
-            self.scrollForMoreView.hidden = true
+            self.scrollForMoreView.isHidden = true
         }
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_pattern")!)
@@ -80,8 +100,8 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
     }
     
     
-    override func viewDidDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver( self )
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver( self )
     }
     
     override func appTimeout() {
@@ -97,12 +117,12 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         //check if modal up
         if( super.isModalUp() ) {
             debugPrint("Close Modal")
-            self.dismissViewControllerAnimated(false, completion: {})
+            self.dismiss(animated: false, completion: {})
             super.setIsModalUp( false )
         }
         
-        self.dismissViewControllerAnimated(false, completion: {
-            self.navigationController?.dismissViewControllerAnimated(true, completion: nil )
+        self.dismiss(animated: false, completion: {
+            self.navigationController?.dismiss(animated: true, completion: nil )
         })
         
     }
@@ -112,38 +132,38 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         //check if modal up
         if( super.isModalUp() ) {
             
-            self.dismissViewControllerAnimated(false, completion: {
+            self.dismiss(animated: false, completion: {
                 super.setIsModalUp( false )
             })
             
         }
     }
     
-    @IBAction func clickBack(sender: AnyObject) {
+    @IBAction func clickBack(_ sender: AnyObject) {
         
         //come from left...
         let transition = CATransition()
         transition.type = kCATransitionPush
         transition.subtype = kCATransitionFromLeft
-        transition.removedOnCompletion = true
+        transition.isRemovedOnCompletion = true
         
-        self.view.window?.layer.addAnimation(transition, forKey: kCATransition)
+        self.view.window?.layer.add(transition, forKey: kCATransition)
         
         let sb = UIStoryboard(name: "DocumentTree", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("DocumentTreeViewController") as! DocumentTreeViewController
+        let vc = sb.instantiateViewController(withIdentifier: "DocumentTreeViewController") as! DocumentTreeViewController
         vc.category = category!.parent
         
         self.navigationController?.pushViewController( vc, animated: false)
         
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell : DocumentTreeSectionCell?
         
         let selectedBackgroundView = UIView()
         
-        let category = self.categories![indexPath.row]
+        let category = self.categories![(indexPath as NSIndexPath).row]
         
         var categoryParent = category
         while categoryParent.parent != nil {
@@ -157,7 +177,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
             
             if(category.parent == nil) {
                 
-                cell = tableView.dequeueReusableCellWithIdentifier("DocumentTreeMainSectionCell")! as! DocumentTreeSectionCell
+                cell = tableView.dequeueReusableCell(withIdentifier: "DocumentTreeMainSectionCell")! as? DocumentTreeSectionCell
                 
                 cell!.sectionTitle.text = category.label
                 let iconFile = "\(NSTemporaryDirectory())cat_\(category.id!).png"
@@ -168,7 +188,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
                 cell!.backgroundColor = UIColor(patternImage: UIImage(named: "cell_bg_black_2048")!)       //Image tiles, but needs to be larger
                 selectedBackgroundView.backgroundColor = UIColor(red: 87.0/255, green: 170.0/255, blue: 220.0/255, alpha: 1.0)
                 self.documentTableView.separatorColor = UIColor(red: 78.0/255, green: 80.0/255, blue: 88.0/255, alpha: 1.0)
-                self.headerSectionIcon.hidden = true
+                self.headerSectionIcon.isHidden = true
 
             }
             else
@@ -176,7 +196,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
                 
                 // Sub Category
                 debugPrint("Subcategory")
-                cell = tableView.dequeueReusableCellWithIdentifier("DocumentTreeSubSectionCell")! as! DocumentTreeSectionCell
+                cell = tableView.dequeueReusableCell(withIdentifier: "DocumentTreeSubSectionCell")! as? DocumentTreeSectionCell
                 
                 cell!.sectionTitle.text = category.label
                 
@@ -187,13 +207,13 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
                 self.headerSectionIcon.image = UIImage(contentsOfFile: iconFile)
             }
             
-            cell!.backgroundView?.contentMode = UIViewContentMode.TopLeft
+            cell!.backgroundView?.contentMode = UIViewContentMode.topLeft
             
             
             
         } else {
             
-            cell = tableView.dequeueReusableCellWithIdentifier("DocumentTreeLeafCell")! as! DocumentTreeSectionCell
+            cell = tableView.dequeueReusableCell(withIdentifier: "DocumentTreeLeafCell")! as? DocumentTreeSectionCell
             
             //let category = self.content![indexPath.row]
             cell!.sectionTitle.text = category.label
@@ -212,17 +232,17 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         return cell!
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.categories!.count
         
     }
     
-    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! DocumentTreeSectionCell
+        let cell = tableView.cellForRow(at: indexPath) as! DocumentTreeSectionCell
         
-        let category = self.categories![indexPath.row]
+        let category = self.categories![(indexPath as NSIndexPath).row]
         
         if( category.parent == nil && cell.sectionIcon != nil ) {
             debugPrint("Switch Icon:")
@@ -234,11 +254,11 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         return true
     }
     
-    func tableView(tableView: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! DocumentTreeSectionCell
+        let cell = tableView.cellForRow(at: indexPath) as! DocumentTreeSectionCell
         
-        let category = self.categories![indexPath.row]
+        let category = self.categories![(indexPath as NSIndexPath).row]
         
         if( category.parent == nil && cell.sectionIcon != nil) {
             let iconFile = "\(NSTemporaryDirectory())cat_\(category.id!).png"
@@ -247,27 +267,27 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         //return height to be 25% of table height
         return tableView.frame.height/4
         
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         debugPrint("didDeselectRowAtIndexPath")
         
-        let category = self.categories![indexPath.row]
+        let category = self.categories![(indexPath as NSIndexPath).row]
         
         if(  category.content == nil && category.categories?.count > 0 ) {
         //if( displayCategories ) {
             
-            let category = self.categories![indexPath.row]
+            let category = self.categories![(indexPath as NSIndexPath).row]
             
             debugPrint( "Tapped \(category.label)" )
             
             let sb = UIStoryboard(name: "DocumentTree", bundle: nil)
-            let vc = sb.instantiateViewControllerWithIdentifier("DocumentTreeViewController") as! DocumentTreeViewController
+            let vc = sb.instantiateViewController(withIdentifier: "DocumentTreeViewController") as! DocumentTreeViewController
             vc.category = category
             
             self.navigationController?.pushViewController( vc, animated: true)
@@ -283,19 +303,19 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
             //present in modal
             
             let sb = UIStoryboard(name: "DocumentTree", bundle: nil)
-            let vc = sb.instantiateViewControllerWithIdentifier("PDFViewController") as! PDFViewController
+            let vc = sb.instantiateViewController(withIdentifier: "PDFViewController") as! PDFViewController
             
-            vc.modalInPopover = true
-            vc.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-            vc.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+            vc.isModalInPopover = true
+            vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+            vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
             
             let urlPath = "Untitleddocument"  //content.url!
             let pdfFile = "\(NSTemporaryDirectory())\(category.id!).pdf"
             
-            vc.pdfURL = NSURL(fileURLWithPath: pdfFile)
+            vc.pdfURL = URL(fileURLWithPath: pdfFile)
             vc.content = category
             
-            self.presentViewController(vc, animated: true, completion: {
+            self.present(vc, animated: true, completion: {
                 super.setIsModalUp( true )
             })
             
@@ -304,7 +324,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         }
     }
     
-    @IBAction func clickSetup(sender: AnyObject) {
+    @IBAction func clickSetup(_ sender: AnyObject) {
         showSetup()
     }
     

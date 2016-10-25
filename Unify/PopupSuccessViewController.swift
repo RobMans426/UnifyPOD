@@ -15,17 +15,17 @@ class PopupSuccessViewController : BaseViewController {
     @IBOutlet weak var infoLabel: UILabel!
     
     enum SuccessType {
-        case EMAIL
-        case PRINT
+        case email
+        case print
     }
     
-    var successType: SuccessType = SuccessType.PRINT
+    var successType: SuccessType = SuccessType.print
     
     override func viewDidLoad() {
         
         //make info label say correct message
         
-        if( self.successType == SuccessType.EMAIL ) {
+        if( self.successType == SuccessType.email ) {
             //email
             infoLabel.text = "Your information was emailed."
             
@@ -39,19 +39,19 @@ class PopupSuccessViewController : BaseViewController {
         
     }
     
-    @IBAction func clickReturn(sender: AnyObject) {
+    @IBAction func clickReturn(_ sender: AnyObject) {
         debugPrint("PopupSuccess clickReturn")
         
-         NSNotificationCenter.defaultCenter().postNotificationName("DocumentTreeCloseModals", object: nil)
+         NotificationCenter.default.post(name: Notification.Name(rawValue: "DocumentTreeCloseModals"), object: nil)
         
     }
     
     
-    @IBAction func clickDone(sender: AnyObject) {
+    @IBAction func clickDone(_ sender: AnyObject) {
         debugPrint("PopupSuccess clickDone")
         
-        self.presentingViewController?.dismissViewControllerAnimated(false, completion: {
-            NSNotificationCenter.defaultCenter().postNotificationName("DocumentTreeReturnToMain", object: nil)
+        self.presentingViewController?.dismiss(animated: false, completion: {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "DocumentTreeReturnToMain"), object: nil)
         })
     }
 }

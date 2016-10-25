@@ -11,15 +11,15 @@ import UIKit
 
 class KioskApplication: UIApplication {
     
-    var idleTimer: NSTimer?
+    var idleTimer: Timer?
     
-    override func sendEvent(event: UIEvent) {
+    override func sendEvent(_ event: UIEvent) {
         super.sendEvent(event)
         
-        let touches = event.allTouches()
-        if( touches?.count > 0 ) {
+        let touches = event.allTouches
+        if( (touches?.count)! > 0 ) {
             let phase = touches?.first?.phase
-            if( phase == UITouchPhase.Began ) {
+            if( phase == UITouchPhase.began ) {
                 debugPrint("Tapped")
                 self.resetIdleTimer()
             }
@@ -34,13 +34,13 @@ class KioskApplication: UIApplication {
         }
         
         let timeOut = 60.0
-        self.idleTimer = NSTimer.scheduledTimerWithTimeInterval(timeOut, target: self, selector: "idleTimerExceeded", userInfo: nil, repeats: false)
+        self.idleTimer = Timer.scheduledTimer(timeInterval: timeOut, target: self, selector: #selector(KioskApplication.idleTimerExceeded), userInfo: nil, repeats: false)
         
     }
     
     func idleTimerExceeded() {
         debugPrint("idleTimerExceeded")
-        NSNotificationCenter.defaultCenter().postNotificationName("KioskApplicationTimeout", object: nil)
-    }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "KioskApplicationTimeout"), object: nil)
+        }
 
 }

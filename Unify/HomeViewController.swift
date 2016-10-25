@@ -17,16 +17,16 @@ class HomeViewController : BaseViewController {
         
         //check to see if we need to present settings...
         
-        let tapgr = UITapGestureRecognizer(target: self, action: "viewTapped")
+        let tapgr = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.viewTapped))
         self.view.addGestureRecognizer( tapgr )
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "viewTapped", name: "AttractLoopUserStopped", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.viewTapped), name: NSNotification.Name(rawValue: "AttractLoopUserStopped"), object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadData", name: "ReloadData", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.reloadData), name: NSNotification.Name(rawValue: "ReloadData"), object: nil)
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         let settings = PODSettings.instance
         
@@ -36,8 +36,8 @@ class HomeViewController : BaseViewController {
             
             debugPrint("Show Settings...")
             let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewControllerWithIdentifier("SettingsViewController")
-            self.presentViewController(vc, animated: true, completion: {})
+            let vc = sb.instantiateViewController(withIdentifier: "SettingsViewController")
+            self.present(vc, animated: true, completion: {})
             
         } else {
             
@@ -46,7 +46,7 @@ class HomeViewController : BaseViewController {
                 self.loadData({(completed:Bool) -> Void in
                     
                     if( completed ) {
-                        dispatch_async(dispatch_get_main_queue(), {
+                        DispatchQueue.main.async(execute: {
                             
                             self.completeSetup()
                             
@@ -67,7 +67,7 @@ class HomeViewController : BaseViewController {
         })
     }
     
-    func loadData( completion: (completed:Bool) -> Void ) {
+    func loadData( _ completion: @escaping (_ completed:Bool) -> Void ) {
         
         debugPrint( "Reload Data!" )
         
@@ -96,25 +96,25 @@ class HomeViewController : BaseViewController {
         
             
         //register
-        PODClient.instance.register(PODSettings.instance.getRegionCode()!, completion: { (completed:Bool, branchName:String?) -> Void in
+        PODClient.instance.register(branchId: PODSettings.instance.getRegionCode()!, completion: { (completed:Bool, branchName:String?) -> Void in
             
             if( completed ) {
                 
-                PODClient.instance.loadDocumentTree(PODSettings.instance.getRegionCode()!, completion:{(completed:Bool) -> Void in
+                PODClient.instance.loadDocumentTree(branchId: PODSettings.instance.getRegionCode()!, completion:{(completed:Bool) -> Void in
                     
                     if( completed ) {
                         
                         debugPrint("DONE!")
                         
                         //grab icons
-                        PODClient.instance.loadIcons(PODSettings.instance.getRegionCode()!, completion:{(completed:Bool) -> Void in
+                        PODClient.instance.loadIcons(branchId: PODSettings.instance.getRegionCode()!, completion:{(completed:Bool) -> Void in
                             
-                            PODClient.instance.loadVideo(PODSettings.instance.getRegionCode()!, completion:{(completed:Bool) -> Void in
+                            PODClient.instance.loadVideo(branchId: PODSettings.instance.getRegionCode()!, completion:{(completed:Bool) -> Void in
                                 
-                                dispatch_async(dispatch_get_main_queue(), {
+                                DispatchQueue.main.async(execute: {
                                     
                                     //self.completeSetup()
-                                    completion( completed: true )
+                                    completion( true )
                                     
                                 })
                                 
@@ -126,7 +126,7 @@ class HomeViewController : BaseViewController {
                     } else {
                         
                         debugPrint("Error: LoadDocumentTree failed")
-                        completion( completed: false )
+                        completion( false )
                         
                     }
                     
@@ -136,7 +136,7 @@ class HomeViewController : BaseViewController {
             } else {
                 
                 debugPrint("Error: Registration Failed")
-                completion( completed: false )
+                completion( false )
                 
             }
             
@@ -148,7 +148,7 @@ class HomeViewController : BaseViewController {
     func completeSetup() {
         
         super.startAttractLoop()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "appTimeout", name: "KioskApplicationTimeout", object: nil)
+        NotificationCenter.default.addObserver(self, selector: Selector(("appTimeout")), name: NSNotification.Name(rawValue: "KioskApplicationTimeout"), object: nil)
         
     }
     
@@ -156,7 +156,7 @@ class HomeViewController : BaseViewController {
         
         let sb = UIStoryboard(name: "DocumentTree", bundle: nil)
         let vc = sb.instantiateInitialViewController()!
-        self.presentViewController(vc, animated: true, completion: {})
+        self.present(vc, animated: true, completion: {})
         
     }
     

@@ -9,5 +9,5 @@
 import Foundation
 import UIKit
 
-UIApplicationMain(Process.argc, Process.unsafeArgv, NSStringFromClass(KioskApplication),
+UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, NSStringFromClass(KioskApplication),
     NSStringFromClass(AppDelegate))

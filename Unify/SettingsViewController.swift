@@ -31,31 +31,31 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
         }
     }
     
-    @IBAction func clickSave(sender: AnyObject) {
+    @IBAction func clickSave(_ sender: AnyObject) {
         debugPrint("Save")
         
         if( printer == nil && self.regionIdentifier.text == nil) {
             
-            let alert = UIAlertController(title: "Error", message: "You must input a region and select a printer to continue", preferredStyle: UIAlertControllerStyle.Alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(UIAlertAction) -> Void in
+            let alert = UIAlertController(title: "Error", message: "You must input a region and select a printer to continue", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) -> Void in
                 
             })
             
             alert.addAction( okAction )
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
             
             
         } else if( printer == nil ) {
             
-            let alert = UIAlertController(title: "Error", message: "Please select a printer to enable printing, or click OK to continue without a printer.", preferredStyle: UIAlertControllerStyle.Alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(UIAlertAction) -> Void in
+            let alert = UIAlertController(title: "Error", message: "Please select a printer to enable printing, or click OK to continue without a printer.", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) -> Void in
                 
                 self.settings.saveRegionCode( self.regionIdentifier.text! )
                 
                 self.checkRegistration()
                 
             })
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: {(UIAlertAction) -> Void in
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(UIAlertAction) -> Void in
                 
                 
                 
@@ -64,7 +64,7 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
             alert.addAction( okAction )
             alert.addAction( cancelAction )
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
             
             
             
@@ -79,24 +79,24 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
         }
     }
     
-    private func checkRegistration() {
+    fileprivate func checkRegistration() {
         
         
-        PODClient.instance.register( self.regionIdentifier.text!, completion: {(completed :Bool, branchName: String? ) -> Void in
+        PODClient.instance.register( branchId: self.regionIdentifier.text!, completion: {(completed :Bool, branchName: String? ) -> Void in
             
             if( completed ) {
                 
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     
                     //self.dismissViewControllerAnimated(true, completion: nil)
-                    let alert = UIAlertController(title: "Info", message: "This code is for branch: \(branchName!).  Select OK to continue to use this branch.", preferredStyle: UIAlertControllerStyle.Alert)
-                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(UIAlertAction) -> Void in
+                    let alert = UIAlertController(title: "Info", message: "This code is for branch: \(branchName!).  Select OK to continue to use this branch.", preferredStyle: UIAlertControllerStyle.alert)
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) -> Void in
                         
-                        self.dismissViewControllerAnimated(false, completion: nil)
+                        self.dismiss(animated: false, completion: nil)
                         
                     })
                     
-                    let cancelAction = UIAlertAction(title: "CANCEL", style: UIAlertActionStyle.Default, handler: {(UIAlertAction) -> Void in
+                    let cancelAction = UIAlertAction(title: "CANCEL", style: UIAlertActionStyle.default, handler: {(UIAlertAction) -> Void in
                         
                         
                         
@@ -104,23 +104,23 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
                     
                     alert.addAction( okAction )
                     alert.addAction( cancelAction )
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.present(alert, animated: true, completion: nil)
                     
                 })
                 
                 
             } else {
                 
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     
-                    let alert = UIAlertController(title: "Error", message: "Not able to register with code \(self.regionIdentifier.text!). Check your code and internet connection.", preferredStyle: UIAlertControllerStyle.Alert)
-                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(UIAlertAction) -> Void in
+                    let alert = UIAlertController(title: "Error", message: "Not able to register with code \(self.regionIdentifier.text!). Check your code and internet connection.", preferredStyle: UIAlertControllerStyle.alert)
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) -> Void in
                         
                         
                     })
                     
                     alert.addAction( okAction )
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.present(alert, animated: true, completion: nil)
                     
                 })
                 
@@ -132,36 +132,36 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
         
     }
     
-    @IBAction func clickPrinter(sender: AnyObject) {
+    @IBAction func clickPrinter(_ sender: AnyObject) {
         
         let printerPicker = UIPrinterPickerController(initiallySelectedPrinter: nil)
         printerPicker.delegate = self
         
-        printerPicker.presentFromRect(CGRectMake(0, 0, 0, 0), inView: self.view, animated: true, completionHandler: {(pickerController:UIPrinterPickerController, completed:Bool, error:NSError?) -> Void in
+        printerPicker.present(from: CGRect(x: 0, y: 0, width: 0, height: 0), in: self.view, animated: true, completionHandler: {(pickerController:UIPrinterPickerController, completed:Bool, error:NSError?) -> Void in
             
             if( completed ) {
                 debugPrint( pickerController.selectedPrinter )
                 
                 self.printer = pickerController.selectedPrinter
                 self.printerLabel.text = self.printer!.displayName
-                debugPrint("Selected Printer:\(self.printer!.URL)")
+                debugPrint("Selected Printer:\(self.printer!.url)")
                 
                 //print test page
-                let testPath = NSBundle.mainBundle().pathForResource("small", ofType: "pdf")
-                let testPDFUrl = NSURL(fileURLWithPath: testPath!)
+                let testPath = Bundle.main.path(forResource: "small", ofType: "pdf")
+                let testPDFUrl = URL(fileURLWithPath: testPath!)
                 
                 let printinfo = UIPrintInfo(dictionary: nil)
                 
                 printinfo.jobName = "Test Page"
-                printinfo.outputType = .General
+                printinfo.outputType = .general
                 
-                let printController = UIPrintInteractionController.sharedPrintController()
+                let printController = UIPrintInteractionController.shared
                 printController.printInfo = printinfo
                 printController.showsNumberOfCopies = false
                 
                 printController.printingItem = testPDFUrl
                 
-                printController.printToPrinter(self.printer!, completionHandler: {(printController:UIPrintInteractionController, completed:Bool, error:NSError?) -> Void in
+                printController.print(to: self.printer!, completionHandler: {(printController:UIPrintInteractionController, completed:Bool, error:NSError?) -> Void in
                     debugPrint("Print Completion Handler")
                     
                     if( !completed ) {
@@ -181,16 +181,16 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
 
     }
     
-    func printerPickerControllerDidPresent(printerPickerController: UIPrinterPickerController) {
+    func printerPickerControllerDidPresent(_ printerPickerController: UIPrinterPickerController) {
         debugPrint("Picker Presented")
     }
     
-    func printerPickerController(printerPickerController: UIPrinterPickerController, shouldShowPrinter printer: UIPrinter) -> Bool {
+    func printerPickerController(_ printerPickerController: UIPrinterPickerController, shouldShow printer: UIPrinter) -> Bool {
         debugPrint("shouldShowPrinter:\(printer.description)")
         return true
     }
     
-    func printerPickerControllerParentViewController(printerPickerController: UIPrinterPickerController) -> UIViewController? {
+    func printerPickerControllerParentViewController(_ printerPickerController: UIPrinterPickerController) -> UIViewController? {
         return self
     }
 }

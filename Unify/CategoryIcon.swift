@@ -21,7 +21,7 @@ class CategoryIcon : NSObject {
         self.loadFromJSON( json )
     }
     
-    private func loadFromJSON( json: JSON ) {
+    fileprivate func loadFromJSON( _ json: JSON ) {
         
         self.categoryId = json["category_id"].string
         self.color = json["color"].string

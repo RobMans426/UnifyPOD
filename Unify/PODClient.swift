@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class PODClient : NSObject,  NSURLSessionDelegate {
+class PODClient : NSObject,  URLSessionDelegate {
     
     static let instance = PODClient()
     
@@ -22,9 +22,9 @@ class PODClient : NSObject,  NSURLSessionDelegate {
     var categories : Array<Category> = Array()
     var categoryIcons : Array<CategoryIcon> = Array()
     
-    override private init() {
+    private override init() {
         
-        let dict = NSBundle.mainBundle().infoDictionary
+        let dict = Bundle.main.infoDictionary
         
         if( ENVIRONMENT == "PROD" ) {
             
@@ -41,22 +41,22 @@ class PODClient : NSObject,  NSURLSessionDelegate {
         }
     }
     
-    func register( branchId:String, completion: (completed:Bool, branchName:String?) -> Void ) {
+    func register( branchId:String, completion:  @escaping (_ completed:Bool, _ branchName:String?) -> Void ) {
         
-        let endpoint = NSURL(string: "\(apiBase)/register/\(branchId)")
+        let endpoint = URL(string: "\(apiBase)/register/\(branchId)")
         
         debugPrint("Endpoint:\(endpoint!)")
         
         
-        let request = NSMutableURLRequest(URL: endpoint!)
+        var request = URLRequest(url: endpoint!)
         
         let session = createSession()
         
-        request.HTTPMethod = "POST"
+        request.httpMethod = "POST"
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+        let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
             
             do {
                 
@@ -68,7 +68,7 @@ class PODClient : NSObject,  NSURLSessionDelegate {
                     //look for status...
                     if json["status"] != nil {
                         if( json["status"] == "failure" ) {
-                            completion(completed: false, branchName: nil)
+                            completion(false, nil)
                             return;
                         }
                     }
@@ -77,14 +77,14 @@ class PODClient : NSObject,  NSURLSessionDelegate {
                     
                     self.apiKey = json["key"].string!
                     
-                    completion(completed: true, branchName: json["name"].string)
+                    completion(true, json["name"].string)
                     
                 }
                 else {
                     
                     debugPrint(error?.localizedDescription)
                     
-                    completion(completed: false, branchName: nil)
+                    completion(false, nil)
                 }
                 
                 
@@ -96,21 +96,21 @@ class PODClient : NSObject,  NSURLSessionDelegate {
         
     }
     
-    func loadVideo( branchId:String,  completion: (completed:Bool) -> Void  ) {
+    func loadVideo( branchId:String,  completion:@escaping (_ completed:Bool) -> Void  ) {
         
-        let endpoint = NSURL(string: "\(apiBase)/attractloop/\(branchId)")
+        let endpoint = URL(string: "\(apiBase)/attractloop/\(branchId)")
         
         debugPrint("Endpoint:\(endpoint!)")
         
         
-        let request = NSMutableURLRequest(URL: endpoint!)
+        var request = URLRequest(url: endpoint!)
         let session = createSession()
         
-        request.HTTPMethod = "GET"
+        request.httpMethod = "GET"
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+        let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
             
             do {
                 
@@ -125,11 +125,11 @@ class PODClient : NSObject,  NSURLSessionDelegate {
                     
                     debugPrint("Video URL: \(videoURL)")
                     
-                    let url = NSURL(string: videoURL)
+                    let url = URL(string: videoURL)
                     let tmpFile = "attract_loop.mp4"
-                    let task = self.createDownloadTask(url!, tmpFile: tmpFile, completionHandler: {(completeion:Bool) -> Void in
+                    let task = self.createDownloadTask(url: url!, tmpFile: tmpFile, completionHandler: {(completeion:Bool) -> Void in
                         
-                        completion(completed: true)
+                        completion(true)
                         
                     })
                     task.resume()
@@ -140,7 +140,7 @@ class PODClient : NSObject,  NSURLSessionDelegate {
                     
                     debugPrint(error?.localizedDescription)
                     
-                    completion(completed: false)
+                    completion(false)
                 }
                 
                 
@@ -152,22 +152,22 @@ class PODClient : NSObject,  NSURLSessionDelegate {
         
     }
     
-    func loadIcons( branchId:String,  completion: (completed:Bool) -> Void  ) {
+    func loadIcons(branchId:String,  completion: @escaping (_ completed:Bool) -> Void  ) {
         
-        let endpoint = NSURL(string: "\(apiBase)/icons/\(branchId)")
+        let endpoint = URL(string: "\(apiBase)/icons/\(branchId)")
         
         debugPrint("Endpoint:\(endpoint!)")
         
         
-        let request = NSMutableURLRequest(URL: endpoint!)
+        var request = URLRequest(url: endpoint!)
         let session = createSession()
         
-        request.HTTPMethod = "GET"
+        request.httpMethod = "GET"
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(self.apiKey, forHTTPHeaderField: "X-API-KEY")
         
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+        let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
             
             do {
                 
@@ -188,7 +188,7 @@ class PODClient : NSObject,  NSURLSessionDelegate {
                     
                     for iconCat in self.categoryIcons {
                         
-                        let url = NSURL(string: iconCat.url!)
+                        let url = URL(string: iconCat.url!)
                         var tmpFile = ""
                         if( iconCat.color == "W"  ) {
                             tmpFile = "cat_\(iconCat.categoryId!)_selected.png"
@@ -196,20 +196,20 @@ class PODClient : NSObject,  NSURLSessionDelegate {
                             tmpFile = "cat_\(iconCat.categoryId!).png"
                         }
                         
-                        let task = self.createDownloadTask(url!, tmpFile: tmpFile, completionHandler: {(completeion:Bool) -> Void in
+                        let task = self.createDownloadTask(url: url!, tmpFile: tmpFile, completionHandler: {(completeion:Bool) -> Void in
                         
                         })
                         task.resume()
                     }
                     
-                    completion( completed: true )
+                    completion(true )
                     
                 }
                 else {
                     
                     debugPrint(error?.localizedDescription)
                     
-                    completion(completed: false)
+                    completion(false)
                 }
                 
                 
@@ -221,23 +221,23 @@ class PODClient : NSObject,  NSURLSessionDelegate {
         
     }
     
-    func loadDocumentTree( branchId: String, completion: (completed:Bool) -> Void ) {
+    func loadDocumentTree(branchId: String, completion:@escaping (_ completed:Bool) -> Void ) {
         
-        let endpoint = NSURL(string: "\(apiBase)/categories/\(branchId)")
+        let endpoint = URL(string: "\(apiBase)/categories/\(branchId)")
         
         debugPrint("Endpoint:\(endpoint!)")
         
         
-        let request = NSMutableURLRequest(URL: endpoint!)
+        var request = URLRequest(url: endpoint!)
         let session = createSession()
         
-        request.HTTPMethod = "GET"
+        request.httpMethod = "GET"
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         //var products = Array<Service>()
         
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+        let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
             
             do {
                 
@@ -264,7 +264,7 @@ class PODClient : NSObject,  NSURLSessionDelegate {
                     
                     if( self.categories.count > 0 ) {
                         
-                        let tasks = self.getCategoryDocumentDownloadTasks( self.categories )
+                        let tasks = self.getCategoryDocumentDownloadTasks( cats: self.categories )
                         for task in tasks {
                             task.resume()
                         }
@@ -273,7 +273,7 @@ class PODClient : NSObject,  NSURLSessionDelegate {
                     
                     
                     
-                    completion(completed: true)
+                    completion(true)
                     
                 }
                 else {
@@ -283,9 +283,9 @@ class PODClient : NSObject,  NSURLSessionDelegate {
                     //debugPrint("Try local storage...")
                     self.loadCategoriesFromLocal()
                     if( self.categories.count > 0 ) {
-                        completion(completed: true)
+                        completion(true)
                     } else {
-                        completion(completed: false)
+                        completion(false)
                     }
                     
                 }
@@ -301,18 +301,18 @@ class PODClient : NSObject,  NSURLSessionDelegate {
         
     }
     
-    private func getCategoryDocumentDownloadTasks( cats: Array<Category>) -> Array<NSURLSessionDataTask> {
+    private func getCategoryDocumentDownloadTasks(cats: Array<Category>) -> Array<URLSessionDataTask> {
         
-        var tasks : Array<NSURLSessionDataTask> = Array()
+        var tasks : Array<URLSessionDataTask> = Array()
         
         //start grabbing o pdfs...
         for cat in cats {
             
             if( cat.content != nil ) {
                 
-                let url = NSURL(string: cat.content!.url!)
+                let url = URL(string: cat.content!.url!)
                 let tmpFile = "\(cat.id!).pdf"
-                let task = self.createDownloadTask(url!, tmpFile: tmpFile, completionHandler: {(completeion:Bool) -> Void in
+                let task = self.createDownloadTask(url: url!, tmpFile: tmpFile, completionHandler: {(completeion:Bool) -> Void in
                     
                 })
                 
@@ -320,8 +320,8 @@ class PODClient : NSObject,  NSURLSessionDelegate {
                 
             }
             
-            if( cat.categories?.count > 0 ) {
-                    tasks.appendContentsOf( self.getCategoryDocumentDownloadTasks( cat.categories! ) )
+            if( (cat.categories?.count)! > 0 ) {
+                    tasks.append( self.getCategoryDocumentDownloadTasks( cats: cat.categories! ) )
             }
         }
         
@@ -331,8 +331,8 @@ class PODClient : NSObject,  NSURLSessionDelegate {
     
     private func loadCategoriesFromLocal() {
         
-        let path =  NSBundle.mainBundle().pathForResource("test", ofType: "json")!
-        let json = JSON(data: NSData(contentsOfFile: path)!)
+        let path =  Bundle.main.path(forResource: "test", ofType: "json")!
+        let json = JSON(data: try! Data(contentsOf: URL(fileURLWithPath: path)))
         
         //debugPrint(json)
         
@@ -347,7 +347,7 @@ class PODClient : NSObject,  NSURLSessionDelegate {
         
     }
     
-    func sendEmail( recipient:String, documentURL: String, completion: (completed:Bool) -> Void  ) {
+    func sendEmail(recipient:String, documentURL: String, completion: @escaping (_ completed:Bool) -> Void  ) {
         
         var jsonPost : JSON = ["key":self.mandrillKey]
         
@@ -372,30 +372,30 @@ class PODClient : NSObject,  NSURLSessionDelegate {
         
         debugPrint(jsonPost)
         
-        let endpoint = NSURL(string: "https://mandrillapp.com/api/1.0/messages/send.json" )
+        let endpoint = URL(string: "https://mandrillapp.com/api/1.0/messages/send.json" )
         
-        let request = NSMutableURLRequest(URL: endpoint!)
+        var request = URLRequest(url: endpoint!)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let session = NSURLSession.sharedSession()
+        let session = Foundation.URLSession.shared
         
-        request.HTTPMethod = "POST"
+        request.httpMethod = "POST"
         
         
         do {
             
-            try request.HTTPBody = jsonPost.rawData()
+            try request.httpBody = jsonPost.rawData()
             
             
-            let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
                 
-                debugPrint( String(data: data!, encoding: NSUTF8StringEncoding) )
+                debugPrint( String(data: data!, encoding: String.Encoding.utf8) )
                 
                 if( error != nil ) {
                     debugPrint("Error: \(error?.localizedDescription)")
-                    completion(completed: false)
+                    completion(false)
                 } else {
                     
-                    completion(completed: true)
+                    completion(true)
                     
                 }
                 
@@ -412,34 +412,34 @@ class PODClient : NSObject,  NSURLSessionDelegate {
         }
     }
     
-    func sendEmailSendGrid( recipient:String, documentURL: String, completion: (completed:Bool) -> Void  ) {
+    func sendEmailSendGrid(recipient:String, documentURL: String, completion:@escaping (_ completed:Bool) -> Void  ) {
         
-        let endpoint = NSURL(string: "https://api.sendgrid.com/api/mail.send.json" )
+        let endpoint = URL(string: "https://api.sendgrid.com/api/mail.send.json" )
         
-        let request = NSMutableURLRequest(URL: endpoint!)
+        var request = URLRequest(url: endpoint!)
         //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let session = NSURLSession.sharedSession()
+        let session = Foundation.URLSession.shared
         
         let subject = "Unify Doc Request"
         
         let postString = "from=noreply@dragonarmy.com&to=\(recipient)&html=\(documentURL)&subject=\(subject)"
         
-        request.HTTPMethod = "POST"
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        request.httpMethod = "POST"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
         request.setValue("Bearer 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", forHTTPHeaderField: "Authorization")
         
         
             
-            let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
                 
-                debugPrint( String(data: data!, encoding: NSUTF8StringEncoding) )
+                debugPrint( String(data: data!, encoding: String.Encoding.utf8) )
                 
                 if( error != nil ) {
                     debugPrint("Error: \(error?.localizedDescription)")
-                    completion(completed: false)
+                    completion(false)
                 } else {
                     
-                    completion(completed: true)
+                    completion(true)
                     
                 }
                 
@@ -455,46 +455,46 @@ class PODClient : NSObject,  NSURLSessionDelegate {
     }
 
     
-    func createDownloadTask( url: NSURL, tmpFile: String, completionHandler : (success:Bool) -> Void ) -> NSURLSessionDataTask {
+    func createDownloadTask(url: URL, tmpFile: String, completionHandler : @escaping (_ success:Bool) -> Void ) -> URLSessionDataTask {
         
-        let request = NSMutableURLRequest(URL: url)
+        var request = URLRequest(url: url)
         let session = createSession()
         
-        request.HTTPMethod = "GET"
+        request.httpMethod = "GET"
         
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+        let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
             
             do {
                 if(error == nil) {
                     
                     //write data to file
                     let tempDir = NSTemporaryDirectory()
-                    let fileManager = NSFileManager.defaultManager()
+                    let fileManager = FileManager.default
                     
                     let fullPath = "\(tempDir)\(tmpFile)"
-                    let file = NSFileHandle(forWritingAtPath:tmpFile)
+                    let file = FileHandle(forWritingAtPath:tmpFile)
                     
                     debugPrint("Writing to File \(file) : \(fullPath)")
                     
                     if  file == nil {
-                        fileManager.createFileAtPath(fullPath, contents: data, attributes: nil)
+                        fileManager.createFile(atPath: fullPath, contents: data, attributes: nil)
                     } else {
-                        file!.writeData(data!)
+                        file!.write(data!)
                     }
                     
                     file?.closeFile()
                     
-                    completionHandler(success: true)
+                    completionHandler(true)
                 }
                 else {
                     
                     debugPrint(error?.localizedDescription)
-                    completionHandler(success: false)
+                    completionHandler(false)
                 }
                 
             } catch {
                 print(error)
-                completionHandler(success: false)
+                completionHandler(false)
             }
             
         })
@@ -502,46 +502,46 @@ class PODClient : NSObject,  NSURLSessionDelegate {
         return task
     }
     
-    func downloadFile( url: NSURL, tmpFile: String, completionHandler : (success:Bool) -> Void ) {
+    func downloadFile(url: URL, tmpFile: String, completionHandler : @escaping (_ success:Bool) -> Void ) {
         
-        let task = self.createDownloadTask(url, tmpFile: tmpFile, completionHandler: completionHandler)
+        let task = self.createDownloadTask(url: url, tmpFile: tmpFile, completionHandler: completionHandler)
         task.resume()
         
     }
     
-    func downloadData( url: NSURL, completionHandler: (data: NSData?) -> Void ) {
+    func downloadData(url: URL, completionHandler:@escaping (_ data: Data?) -> Void ) {
         
-        let request = NSMutableURLRequest(URL: url)
+        var request = URLRequest(url: url)
         let session = createSession()
         
-        request.HTTPMethod = "GET"
+        request.httpMethod = "GET"
         
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+        let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
             
             if( error != nil ) {
                 debugPrint("ERROR: downloadData: \(error?.localizedDescription)")
             }
             
-            completionHandler(data: data)
+            completionHandler(data)
             
         })
-        
+
         task.resume()
     }
 
     
-    private func createSession() -> NSURLSession  {
-        let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let session = NSURLSession(configuration: sessionConfiguration, delegate: self, delegateQueue: nil)
+    private func createSession() -> Foundation.URLSession  {
+        let sessionConfiguration = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfiguration, delegate: self, delegateQueue: nil)
         return session
     }
     
     /* Delegate Methods */
-    func URLSession(session: NSURLSession, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
+    private func urlSession(session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         
         debugPrint("Did Receve Challenge")
-        let credential = NSURLCredential(trust: challenge.protectionSpace.serverTrust!)//[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust]
-        completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential,credential)
+        let credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)//[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust]
+        completionHandler(Foundation.URLSession.AuthChallengeDisposition.useCredential,credential)
         
     }
     

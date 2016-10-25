@@ -17,25 +17,25 @@ class PODSettings : NSObject {
     let KEY_REGION_CODE = "pod_region_code"
     let KEY_AUTH_TOKEN = "pod_auth_token"
     
-    override private init() {
+    override fileprivate init() {
         
     }
     
-    func savePrinter( printer:UIPrinter ) -> Void {
+    func savePrinter( _ printer:UIPrinter ) -> Void {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setValue(printer.URL.absoluteString, forKey: KEY_PRINTER_URL)
+        let defaults = UserDefaults.standard
+        defaults.setValue(printer.url.absoluteString, forKey: KEY_PRINTER_URL)
     }
     
     func getPrinter() -> UIPrinter? {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let urlstring = defaults.valueForKey( KEY_PRINTER_URL ) as? String
+        let defaults = UserDefaults.standard
+        let urlstring = defaults.value( forKey: KEY_PRINTER_URL ) as? String
         
         if( urlstring != nil ) {
             
-            let url = NSURL(string: urlstring!)
-            return UIPrinter(URL: url! )
+            let url = URL(string: urlstring!)
+            return UIPrinter(url: url! )
         }
         
         return nil
@@ -44,33 +44,33 @@ class PODSettings : NSObject {
     
     
     
-    func saveRegionCode( code:String ) -> Void {
+    func saveRegionCode( _ code:String ) -> Void {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         defaults.setValue(code, forKey: KEY_REGION_CODE)
         
     }
     
     func getRegionCode() -> String? {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        return defaults.valueForKey( KEY_REGION_CODE ) as? String
+        let defaults = UserDefaults.standard
+        return defaults.value( forKey: KEY_REGION_CODE ) as? String
     }
     
     
     
     
-    func saveAuthToken( code:String ) -> Void {
+    func saveAuthToken( _ code:String ) -> Void {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         defaults.setValue(code, forKey: KEY_AUTH_TOKEN)
         
     }
     
     func getAuthToken() -> String? {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        return defaults.valueForKey( KEY_AUTH_TOKEN ) as? String
+        let defaults = UserDefaults.standard
+        return defaults.value( forKey: KEY_AUTH_TOKEN ) as? String
     }
     
     

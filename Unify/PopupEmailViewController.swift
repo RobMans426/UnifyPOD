@@ -20,31 +20,31 @@ class PopupEmailViewController : BaseViewController {
     
     override func viewDidLoad() {
         
-        errorLabel.hidden = true
+        errorLabel.isHidden = true
         
         
     }
     
-    @IBAction func clickClose(sender: AnyObject) {
-        self.presentingViewController?.dismissViewControllerAnimated(false, completion: {
-            NSNotificationCenter.defaultCenter().postNotificationName("PDFRemoveBlur", object: nil)
+    @IBAction func clickClose(_ sender: AnyObject) {
+        self.presentingViewController?.dismiss(animated: false, completion: {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "PDFRemoveBlur"), object: nil)
         })
 
     }
     
-    @IBAction func clickSend(sender: AnyObject) {
+    @IBAction func clickSend(_ sender: AnyObject) {
         debugPrint("Send Email")
         
         do {
             
             let email = self.emailField.text!
-            let regEmai = try NSRegularExpression(pattern: "^[\\w\\.\\:]+@\\w+\\.\\w+$", options: NSRegularExpressionOptions.CaseInsensitive)
+            let regEmai = try NSRegularExpression(pattern: "^[\\w\\.\\:]+@\\w+\\.\\w+$", options: NSRegularExpression.Options.caseInsensitive)
             let range = NSMakeRange(0, email.characters.count)
             
-            if regEmai.numberOfMatchesInString( email, options: NSMatchingOptions.Anchored, range: range) == 0 {
+            if regEmai.numberOfMatches( in: email, options: NSRegularExpression.MatchingOptions.anchored, range: range) == 0 {
                 
                 self.errorLabel.text = "Pleae enter a valid email address"
-                self.errorLabel.hidden = false
+                self.errorLabel.isHidden = false
                 
             } else {
                 
@@ -52,35 +52,35 @@ class PopupEmailViewController : BaseViewController {
                     
                     if( completed ) {
                         
-                        dispatch_async(dispatch_get_main_queue(), {
+                        DispatchQueue.main.async(execute: {
                         //dismiss self
-                        self.dismissViewControllerAnimated(false, completion: nil)
+                        self.dismiss(animated: false, completion: nil)
                         
                         //show success
                         let sb = UIStoryboard(name: "DocumentTree", bundle: nil)
-                        let vc = sb.instantiateViewControllerWithIdentifier("PopupSuccessViewController") as! PopupSuccessViewController
+                        let vc = sb.instantiateViewController(withIdentifier: "PopupSuccessViewController") as! PopupSuccessViewController
                         
-                        vc.successType = PopupSuccessViewController.SuccessType.EMAIL
+                        vc.successType = PopupSuccessViewController.SuccessType.email
                         
-                        vc.modalInPopover = true
-                        vc.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-                        vc.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+                        vc.isModalInPopover = true
+                        vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+                        vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
                         
-                        self.presentingViewController!.presentViewController(vc, animated: true, completion: {})
+                        self.presentingViewController!.present(vc, animated: true, completion: {})
                         
                         })
                         
                     } else {
                         
-                        dispatch_async(dispatch_get_main_queue(), {
+                        DispatchQueue.main.async(execute: {
                             
-                            let alert = UIAlertController(title: "Error", message: "Sorry, the email option is unavailable at this time. Please ask a Branch Representative for assistance.", preferredStyle: UIAlertControllerStyle.Alert)
-                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(UIAlertAction) -> Void in
+                            let alert = UIAlertController(title: "Error", message: "Sorry, the email option is unavailable at this time. Please ask a Branch Representative for assistance.", preferredStyle: UIAlertControllerStyle.alert)
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) -> Void in
                                 
                             })
                             
                             alert.addAction( okAction )
-                            self.presentViewController(alert, animated: true, completion: nil)
+                            self.present(alert, animated: true, completion: nil)
 
                             
                             

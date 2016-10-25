@@ -21,7 +21,7 @@ class Content : NSObject {
         self.loadFromJSON( json )
     }
     
-    private func loadFromJSON( json: JSON ) {
+    fileprivate func loadFromJSON( _ json: JSON ) {
         
         //self.label = json["label"].string
         self.url = json["url"].string

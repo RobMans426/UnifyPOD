@@ -22,7 +22,7 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
     
     @IBOutlet weak var webView: UIWebView!
     
-    var pdfURL : NSURL?
+    var pdfURL : URL?
     var content : Category?
     
     var blurView: UIVisualEffectView?
@@ -43,26 +43,26 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
         
         setupButtons()
         
-        let request = NSURLRequest(URL: pdfURL!)
+        let request = URLRequest(url: pdfURL!)
         webView.scalesPageToFit = true
         webView.loadRequest( request )
     }
     
     func setupButtons() {
         
-        emailButton.addTarget(self, action: "buttonSelected:", forControlEvents: UIControlEvents.TouchDown)
-        printButton.addTarget(self, action: "buttonSelected:", forControlEvents: UIControlEvents.TouchDown)
+        emailButton.addTarget(self, action: #selector(PDFViewController.buttonSelected(_:)), for: UIControlEvents.touchDown)
+        printButton.addTarget(self, action: #selector(PDFViewController.buttonSelected(_:)), for: UIControlEvents.touchDown)
         
-        emailButton.addTarget(self, action: "clickEmail:", forControlEvents: UIControlEvents.TouchUpInside)
-        printButton.addTarget(self, action: "clickPrint:", forControlEvents: UIControlEvents.TouchUpInside)
+        emailButton.addTarget(self, action: #selector(PDFViewController.clickEmail(_:)), for: UIControlEvents.touchUpInside)
+        printButton.addTarget(self, action: #selector(PDFViewController.clickPrint(_:)), for: UIControlEvents.touchUpInside)
         
-        emailButton.addTarget(self, action: "buttonUnselected:", forControlEvents: UIControlEvents.TouchUpOutside)
-        printButton.addTarget(self, action: "buttonUnselected:", forControlEvents: UIControlEvents.TouchUpOutside)
+        emailButton.addTarget(self, action: #selector(PDFViewController.buttonUnselected(_:)), for: UIControlEvents.touchUpOutside)
+        printButton.addTarget(self, action: #selector(PDFViewController.buttonUnselected(_:)), for: UIControlEvents.touchUpOutside)
         
         
     }
     
-    func buttonSelected( button: UIButton ) {
+    func buttonSelected( _ button: UIButton ) {
         
         
         if( button == self.printButton ) {
@@ -78,38 +78,38 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
         
     }
     
-    func buttonUnselected( button: UIButton ) {
+    func buttonUnselected( _ button: UIButton ) {
         
         if( button == self.printButton ) {
             
-            printView.backgroundColor = UIColor.blackColor()
+            printView.backgroundColor = UIColor.black
             printImage.image = UIImage(named: "printer_off")
             
         } else {
             
-            emailView.backgroundColor = UIColor.blackColor()
+            emailView.backgroundColor = UIColor.black
             emailImage.image = UIImage(named: "email_off")
         }
         
     }
     
     
-    override func viewDidAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeBlurView", name: "PDFRemoveBlur", object: nil)
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(PDFViewController.removeBlurView), name: NSNotification.Name(rawValue: "PDFRemoveBlur"), object: nil)
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver( self )
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver( self )
     }
     
-    @IBAction func clickClose(sender: AnyObject) {
-        self.dismissViewControllerAnimated(false, completion: nil)
+    @IBAction func clickClose(_ sender: AnyObject) {
+        self.dismiss(animated: false, completion: nil)
         super.setIsModalUp( false )
     }
     
     func addBlurView() {
         blurView = UIVisualEffectView(frame: self.view.bounds)
-        blurView!.effect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        blurView!.effect = UIBlurEffect(style: UIBlurEffectStyle.light)
         self.view.addSubview( blurView! )
     }
     
@@ -123,39 +123,39 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
     }
     
     
-    @IBAction func clickEmail(sender: AnyObject) {
+    @IBAction func clickEmail(_ sender: AnyObject) {
         debugPrint("clickEmail")
         
         addBlurView()
         
         let sb = UIStoryboard(name: "DocumentTree", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("PopupEmailViewController") as! PopupEmailViewController
+        let vc = sb.instantiateViewController(withIdentifier: "PopupEmailViewController") as! PopupEmailViewController
         
-        vc.modalInPopover = true
-        vc.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-        vc.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        vc.isModalInPopover = true
+        vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
         vc.pdfURL = self.content!.content!.url!
             
-        self.presentViewController(vc, animated: true, completion: {})
+        self.present(vc, animated: true, completion: {})
         
         self.buttonUnselected( emailButton )
     }
     
-    @IBAction func clickPrint(sender: AnyObject) {
+    @IBAction func clickPrint(_ sender: AnyObject) {
         debugPrint("clickPrint")
         
         addBlurView()
         
         let settings = PODSettings.instance
         
-        if settings.getPrinter() != nil && UIPrintInteractionController.canPrintURL( pdfURL! ) {
+        if settings.getPrinter() != nil && UIPrintInteractionController.canPrint( pdfURL! ) {
             
             let printinfo = UIPrintInfo(dictionary: nil)
             
-            printinfo.jobName = pdfURL!.lastPathComponent!
-            printinfo.outputType = .General
+            printinfo.jobName = pdfURL!.lastPathComponent
+            printinfo.outputType = .general
             
-            let printController = UIPrintInteractionController.sharedPrintController()
+            let printController = UIPrintInteractionController.shared
             printController.printInfo = printinfo
             printController.showsNumberOfCopies = false
             
@@ -163,7 +163,7 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
             
             printController.printingItem = pdfURL
             
-            debugPrint("Settings Printer: \(settings.getPrinter()?.URL)")
+            debugPrint("Settings Printer: \(settings.getPrinter()?.url)")
             
             let printerPicker = UIPrinterPickerController(initiallySelectedPrinter: nil)
             printerPicker.delegate = self
@@ -216,7 +216,7 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
 */
             
             
-            printController.printToPrinter(printer, completionHandler: {(printController:UIPrintInteractionController, completed:Bool, error:NSError?) -> Void in
+            printController.print(to: printer, completionHandler: {(printController:UIPrintInteractionController, completed:Bool, error:NSError?) -> Void in
                 debugPrint("Print Completion Handler")
                 
                 if( !completed ) {
@@ -228,15 +228,15 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
                 }
                 
                 let sb = UIStoryboard(name: "DocumentTree", bundle: nil)
-                let vc = sb.instantiateViewControllerWithIdentifier("PopupSuccessViewController") as! PopupSuccessViewController
+                let vc = sb.instantiateViewController(withIdentifier: "PopupSuccessViewController") as! PopupSuccessViewController
                 
-                vc.successType = PopupSuccessViewController.SuccessType.PRINT
+                vc.successType = PopupSuccessViewController.SuccessType.print
                 
-                vc.modalInPopover = true
-                vc.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-                vc.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+                vc.isModalInPopover = true
+                vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+                vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
                 
-                self.presentViewController(vc, animated: true, completion: {})
+                self.present(vc, animated: true, completion: {})
             })
 
             
@@ -244,15 +244,15 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
             
         } else {
             
-            let alert = UIAlertController(title: "Error", message: "Sorry, the printer is unavailable at this time. Please notify a Branch Representative to assist you.", preferredStyle: UIAlertControllerStyle.Alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(UIAlertAction) -> Void in
+            let alert = UIAlertController(title: "Error", message: "Sorry, the printer is unavailable at this time. Please notify a Branch Representative to assist you.", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) -> Void in
                 
                 self.removeBlurView()
                 
             })
             
             alert.addAction( okAction )
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
 
             
             debugPrint("Can not print PDF")
