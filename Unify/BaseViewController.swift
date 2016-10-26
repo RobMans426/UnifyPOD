@@ -81,7 +81,7 @@ class BaseViewController: UIViewController {
     func startAttractLoop() {
         
         //only start if we are showing
-        if( !self.isViewLoaded || /*self.view.window == false */ self.view.window == nil) {
+        if( !self.isViewLoaded || self.view.window == nil) {
             debugPrint("View not viewable")
             return
         }

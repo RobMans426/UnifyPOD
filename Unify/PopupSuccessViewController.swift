@@ -35,8 +35,6 @@ class PopupSuccessViewController : BaseViewController {
             
         }
         
-        
-        
     }
     
     @IBAction func clickReturn(_ sender: AnyObject) {

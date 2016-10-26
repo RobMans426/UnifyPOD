@@ -8,6 +8,25 @@
 
 import Foundation
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l > r
+    default:
+        return rhs < lhs
+    }
+}
 
 class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -16,7 +35,6 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var setupButton: UIButton!
     @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var headerIconTemp: UIImageView!
     @IBOutlet weak var headerSectionIcon: UIImageView!
     @IBOutlet weak var scrollForMoreView: UIView!
     
@@ -68,7 +86,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         
         self.documentTableView.reloadData();
         
-        if( (displayCategories && (self.categories?.count)! > 4 ) || (!displayCategories && (self.content?.count)! > 4 )) {
+        if( (displayCategories && self.categories?.count > 4 ) || (!displayCategories && self.content?.count > 4 )) {
             
             self.scrollForMoreView.isHidden = false
         } else {
@@ -152,9 +170,6 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         
         if( category.content == nil ) {
             
-            
-            
-            
             if(category.parent == nil) {
                 
                 cell = tableView.dequeueReusableCell(withIdentifier: "DocumentTreeMainSectionCell")! as? DocumentTreeSectionCell
@@ -164,7 +179,6 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
                 cell!.sectionIcon.image = UIImage(contentsOfFile: iconFile)
                 
                 // Main menu
-                
                 cell!.backgroundColor = UIColor(patternImage: UIImage(named: "cell_bg_black_2048")!)       //Image tiles, but needs to be larger
                 selectedBackgroundView.backgroundColor = UIColor(red: 87.0/255, green: 170.0/255, blue: 220.0/255, alpha: 1.0)
                 self.documentTableView.separatorColor = UIColor(red: 78.0/255, green: 80.0/255, blue: 88.0/255, alpha: 1.0)
@@ -195,7 +209,6 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
             
             cell = tableView.dequeueReusableCell(withIdentifier: "DocumentTreeLeafCell")! as? DocumentTreeSectionCell
             
-            //let category = self.content![indexPath.row]
             cell!.sectionTitle.text = category.label
             
             // Document
@@ -259,8 +272,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
         
         let category = self.categories![(indexPath as NSIndexPath).row]
         
-        if(  category.content == nil && (category.categories?.count)! > 0 ) {
-        //if( displayCategories ) {
+        if(  category.content == nil && category.categories?.count > 0 ) {
             
             let category = self.categories![(indexPath as NSIndexPath).row]
             
@@ -272,11 +284,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
             
             self.navigationController?.pushViewController( vc, animated: true)
             
-        //} else {
         } else if( category.content != nil ) {
-            
-            //let content = self.content![indexPath.row]
-//            let content = category.content!
             
             debugPrint( "Tapped For Content \(category.label)" )
             
@@ -289,7 +297,6 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
             vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
             vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
             
-//            let urlPath = "Untitleddocument"  //content.url!
             let pdfFile = "\(NSTemporaryDirectory())\(category.id!).pdf"
             
             vc.pdfURL = URL(fileURLWithPath: pdfFile)

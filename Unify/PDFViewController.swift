@@ -172,50 +172,6 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
             
             printerPicker.delegate = self
             
-            /*
-            
-            printerPicker.presentFromRect(<#T##rect: CGRect##CGRect#>, inView: self.view, animated: false, completionHandler: completionHandler: {(pickerController:UIPrinterPickerController, completed:Bool, error:NSError?) -> Void in)
-            */
-            /*
-            printerPicker.presentFromRect(CGRectMake(0, 0, 0, 0), inView: self.view, animated: true, completionHandler: {(pickerController:UIPrinterPickerController, completed:Bool, error:NSError?) -> Void in
-                
-                if( completed ) {
-                    debugPrint( pickerController.selectedPrinter )
-                    //let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                    //delegate.defaultPrinter = pickerController.selectedPrinter
-                    let printer2 = pickerController.selectedPrinter
-                    
-                    debugPrint("Selected Printer:\(printer2?.URL)")
-                    
-                    printController.printToPrinter(printer, completionHandler: {(printController:UIPrintInteractionController, completed:Bool, error:NSError?) -> Void in
-                        debugPrint("Print Completion Handler")
-                        
-                        if( !completed ) {
-                            debugPrint( "Print not completed" )
-                        }
-                        
-                        if( error != nil ) {
-                            debugPrint("ERROR Printing \(error?.localizedDescription)")
-                        }
-                        
-                        let sb = UIStoryboard(name: "DocumentTree", bundle: nil)
-                        let vc = sb.instantiateViewControllerWithIdentifier("PopupSuccessViewController") as! PopupSuccessViewController
-                        
-                        vc.successType = PopupSuccessViewController.SuccessType.PRINT
-                        
-                        vc.modalInPopover = true
-                        vc.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-                        vc.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
-                        
-                        self.presentViewController(vc, animated: true, completion: {})
-                    })
-                    
-                }
-                
-            })
-*/
-            
-            
             printController.print(to: printer, completionHandler: { (printController, completed, error) in
                 debugPrint("Print Completion Handler")
                 

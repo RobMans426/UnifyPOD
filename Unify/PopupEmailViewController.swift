@@ -22,7 +22,6 @@ class PopupEmailViewController : BaseViewController {
         
         errorLabel.isHidden = true
         
-        
     }
     
     @IBAction func clickClose(_ sender: AnyObject) {

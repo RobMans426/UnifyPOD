@@ -38,7 +38,7 @@ class KioskApplication: UIApplication {
         super.sendEvent(event)
         
         let touches = event.allTouches
-        if( (touches?.count)! > 0 ) {
+        if( touches?.count > 0 ) {
             let phase = touches?.first?.phase
             if( phase == UITouchPhase.began ) {
                 debugPrint("Tapped")

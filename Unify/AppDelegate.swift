@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional: configure GAI options.
         let gai = GAI.sharedInstance()
         gai?.trackUncaughtExceptions = true  // report uncaught exceptions
-        gai?.logger.logLevel = GAILogLevel.none  // remove before app release
+        gai?.logger.logLevel = GAILogLevel.verbose  // remove before app release
         
         reloadedDataTime = Date()
         let loadTimeout = 60.0 * 60.0 //one hour

@@ -57,6 +57,7 @@ class HomeViewController : BaseViewController {
                 
             }
         }
+        
     }
     
     func reloadData() {
@@ -71,30 +72,6 @@ class HomeViewController : BaseViewController {
         
         debugPrint( "Reload Data!" )
         
-        /*
-        PODClient.instance.register(PODSettings.instance.getRegionCode()!, completion: { (completed:Bool, branchName:String?) -> Void in
-            
-            if( completed ) {
-                
-                PODClient.instance.loadDocumentTree(PODSettings.instance.getRegionCode()!, completion:{(completed:Bool) -> Void in
-                    
-                    if( completed ) {
-                        
-                        debugPrint("DONE!")
-                        
-                        
-                        completion( completed: true )
-                    }
-                })
-                
-            }
-            })
-        
-        */
-            
-        
-        
-            
         //register
         PODClient.instance.register(branchId: PODSettings.instance.getRegionCode()!, completion: { (completed:Bool, branchName:String?) -> Void in
             
