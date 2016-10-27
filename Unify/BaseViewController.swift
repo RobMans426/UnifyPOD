@@ -81,7 +81,7 @@ class BaseViewController: UIViewController {
     func startAttractLoop() {
         
         //only start if we are showing
-        if( !self.isViewLoaded || self.view.window == nil) {
+        if( !self.isViewLoaded || /*self.view.window == false */ self.view.window == nil) {
             debugPrint("View not viewable")
             return
         }
@@ -96,16 +96,16 @@ class BaseViewController: UIViewController {
         
         
         loadingView = UIView(frame: self.view.frame)
-        loadingView?.backgroundColor = UIColor.black
+        loadingView?.backgroundColor = UIColor.white
         
         let tempDir = NSTemporaryDirectory()
         let fullPath = "\(tempDir)attract_loop.mp4"
-
+        
         
         let vidURL = URL( fileURLWithPath: fullPath )
-        //let vidURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("1Sum_Attract", ofType: "mp4")! )
+//        let vidURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "1Sum_Attract", ofType: "mp4")! )
         
-        self.loadingAVPlayer = AVPlayer(url: vidURL)
+        self.loadingAVPlayer = AVPlayer(url: vidURL as URL)
         let playerLayer = AVPlayerLayer(player: self.loadingAVPlayer)
         playerLayer.frame = loadingView!.bounds
         loadingView!.layer.addSublayer(playerLayer)

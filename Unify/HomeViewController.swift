@@ -84,15 +84,17 @@ class HomeViewController : BaseViewController {
                         debugPrint("DONE!")
                         //grab icons
                         PODClient.instance.loadIcons(branchId: PODSettings.instance.getRegionCode()!, completion:{(completed:Bool) -> Void in
-                            
-                            if (completed){
-                                self.hideProgress()
-                            } else{
-                                debugPrint("Error: LoadIcon failed")
-                                completion( false )
-                                self.hideProgress()
-                            }
+ 
                             PODClient.instance.loadVideo(branchId: PODSettings.instance.getRegionCode()!, completion:{(completed:Bool) -> Void in
+                                
+                                
+                                if (completed){
+                                    self.hideProgress()
+                                } else{
+                                    debugPrint("Error: LoadIcon failed")
+                                    completion( false )
+                                    self.hideProgress()
+                                }
                                 
                                 DispatchQueue.main.async(execute: {
                                     
