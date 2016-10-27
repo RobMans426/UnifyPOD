@@ -162,4 +162,14 @@ class BaseViewController: UIViewController {
         self.present(vc, animated: true, completion: {})        
     }
     
+    func showProgress(){
+        _ = [MBProgressHUD.showAdded(to: self.view, animated: true)]
+        self.view.isUserInteractionEnabled = false
+    }
+    
+    func hideProgress() {
+        _ = [MBProgressHUD.hide(for: self.view, animated: true)]
+        self.view.isUserInteractionEnabled = true
+    }
+    
 }

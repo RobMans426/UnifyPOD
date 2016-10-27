@@ -71,7 +71,7 @@ class HomeViewController : BaseViewController {
     func loadData( _ completion: @escaping (_ completed:Bool) -> Void ) {
         
         debugPrint( "Reload Data!" )
-        
+        self.showProgress()
         //register
         PODClient.instance.register(branchId: PODSettings.instance.getRegionCode()!, completion: { (completed:Bool, branchName:String?) -> Void in
             
@@ -82,7 +82,7 @@ class HomeViewController : BaseViewController {
                     if( completed ) {
                         
                         debugPrint("DONE!")
-                        
+                        self.hideProgress()
                         //grab icons
                         PODClient.instance.loadIcons(branchId: PODSettings.instance.getRegionCode()!, completion:{(completed:Bool) -> Void in
                             
@@ -104,7 +104,7 @@ class HomeViewController : BaseViewController {
                         
                         debugPrint("Error: LoadDocumentTree failed")
                         completion( false )
-                        
+                        self.hideProgress()
                     }
                     
                 })
@@ -114,7 +114,7 @@ class HomeViewController : BaseViewController {
                 
                 debugPrint("Error: Registration Failed")
                 completion( false )
-                
+                self.hideProgress()
             }
             
         })

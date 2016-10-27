@@ -81,7 +81,7 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
     
     fileprivate func checkRegistration() {
         
-        
+        self.showProgress()
         PODClient.instance.register( branchId: self.regionIdentifier.text!, completion: {(completed :Bool, branchName: String? ) -> Void in
             
             if( completed ) {
@@ -105,7 +105,7 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
                     alert.addAction( okAction )
                     alert.addAction( cancelAction )
                     self.present(alert, animated: true, completion: nil)
-                    
+                    self.hideProgress()
                 })
                 
                 
@@ -121,7 +121,7 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
                     
                     alert.addAction( okAction )
                     self.present(alert, animated: true, completion: nil)
-                    
+                    self.hideProgress()
                 })
                 
 

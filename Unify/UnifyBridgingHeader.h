@@ -10,5 +10,7 @@
 #define UnifyBridgingHeader_h
 
 #import <Google/Analytics.h>
+#import "MBProgressHUD.h"
+
 
 #endif /* UnifyBridgingHeader_h */

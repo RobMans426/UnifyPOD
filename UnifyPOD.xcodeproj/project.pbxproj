@@ -41,6 +41,7 @@
 		50FB9F661C5916DC00FABC78 /* 1Sum_Attract.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 50FB9F651C5916DC00FABC78 /* 1Sum_Attract.mp4 */; };
 		7509AD861DBF0B6800AFEC2D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */; };
 		7509AD881DBF0B7A00AFEC2D /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		75CBB7961DC28D1400A02E08 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CBB7951DC28D1400A02E08 /* MBProgressHUD.m */; };
 		818E58E724B582AF75661238 /* Pods_UnifyPOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCE62B9A6000ACB9B31794D /* Pods_UnifyPOD.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,8 @@
 		50FB9F631C57EB0900FABC78 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		50FB9F651C5916DC00FABC78 /* 1Sum_Attract.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1Sum_Attract.mp4; sourceTree = "<group>"; };
 		7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/UnifyPOD-astpkvtsifwrlrcqjloiiogbahna/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		75CBB7941DC28D1400A02E08 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		75CBB7951DC28D1400A02E08 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		76E2668DA7EADABB9B88BFDA /* Pods-UnifyPOD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnifyPOD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnifyPOD/Pods-UnifyPOD.debug.xcconfig"; sourceTree = "<group>"; };
 		BCCE62B9A6000ACB9B31794D /* Pods_UnifyPOD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnifyPOD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -222,6 +225,7 @@
 		50D6E19C1C565BB200D2AB95 /* Unify */ = {
 			isa = PBXGroup;
 			children = (
+				75CBB7921DC28D1400A02E08 /* library */,
 				25FA713D1C639B41007B3EFF /* UI */,
 				25FA713C1C639B24007B3EFF /* Views */,
 				50FB9F501C5670E200FABC78 /* Supporting Files */,
@@ -259,6 +263,23 @@
 				50FB9F631C57EB0900FABC78 /* test.json */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		75CBB7921DC28D1400A02E08 /* library */ = {
+			isa = PBXGroup;
+			children = (
+				75CBB7931DC28D1400A02E08 /* MBProgressHUD */,
+			);
+			path = library;
+			sourceTree = "<group>";
+		};
+		75CBB7931DC28D1400A02E08 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				75CBB7941DC28D1400A02E08 /* MBProgressHUD.h */,
+				75CBB7951DC28D1400A02E08 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +357,11 @@
 						DevelopmentTeam = 8SCC8M6QU6;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					50D6E1AD1C565BB200D2AB95 = {
 						CreatedOnToolsVersion = 7.2;
@@ -469,6 +495,7 @@
 				50323CC41C84A6EE00C67935 /* CategoryIcon.swift in Sources */,
 				50FB9F581C56B4B700FABC78 /* PODSettings.swift in Sources */,
 				50FB9F491C565F0400FABC78 /* main.swift in Sources */,
+				75CBB7961DC28D1400A02E08 /* MBProgressHUD.m in Sources */,
 				50FB9F5E1C57DDCE00FABC78 /* DocumentTreeSectionCell.swift in Sources */,
 				50FB9F621C57E40500FABC78 /* Content.swift in Sources */,
 				50D6E19E1C565BB200D2AB95 /* AppDelegate.swift in Sources */,
