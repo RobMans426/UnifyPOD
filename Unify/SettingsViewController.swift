@@ -12,7 +12,7 @@ import UIKit
 class SettingsViewController : BaseViewController, UIPrinterPickerControllerDelegate, UIAlertViewDelegate {
     
     @IBOutlet weak var regionIdentifier: UITextField!
-    
+    @IBOutlet weak var accessToken: UITextField!
     @IBOutlet weak var printerLabel: UILabel!
     
     let settings = PODSettings.instance
@@ -34,9 +34,9 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
     @IBAction func clickSave(_ sender: AnyObject) {
         debugPrint("Save")
         
-        if( printer == nil && self.regionIdentifier.text == nil) {
+        if( printer == nil && self.regionIdentifier.text == nil && self.accessToken.text == nil) {
             
-            let alert = UIAlertController(title: "Error", message: "You must input a region and select a printer to continue", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Error", message: "You must input a access token, a region code and select a printer to continue", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) -> Void in
                 
             })
@@ -44,6 +44,28 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
             alert.addAction( okAction )
             self.present(alert, animated: true, completion: nil)
             
+            
+        } else if (self.accessToken.text == nil) {
+            
+            let alert = UIAlertController(title: "Error", message: "Please enter your access token to continue.", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) -> Void in
+                
+                self.settings.saveRegionCode( self.regionIdentifier.text! )
+                self.settings.saveAccessToken( self.accessToken.text! )
+                
+                self.checkRegistration()
+                
+            })
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(UIAlertAction) -> Void in
+                
+                
+                
+            })
+            
+            alert.addAction( okAction )
+            alert.addAction( cancelAction )
+            
+            self.present(alert, animated: true, completion: nil)
             
         } else if( printer == nil ) {
             
@@ -73,6 +95,7 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
             
             settings.savePrinter( printer! )
             settings.saveRegionCode( self.regionIdentifier.text! )
+            settings.saveAccessToken(self.accessToken.text!)
             
             checkRegistration()
             
@@ -82,7 +105,7 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
     fileprivate func checkRegistration() {
         
         self.showProgress()
-        PODClient.instance.register( branchId: self.regionIdentifier.text!, completion: {(completed :Bool, branchName: String? ) -> Void in
+        PODClient.instance.register(accessToken: self.accessToken.text!, branchId: self.regionIdentifier.text!, completion: {(completed :Bool, branchName: String? ) -> Void in
             
             if( completed ) {
                 

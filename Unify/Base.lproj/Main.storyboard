@@ -86,32 +86,51 @@
                                     <action selector="clickSave:" destination="QJR-Py-skD" eventType="touchUpInside" id="YK9-35-bMl"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aAn-8L-iGl">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOKEN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8u-6z-Ng8">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="381" id="TkX-rv-ZUa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="aAn-8L-iGl" firstAttribute="top" secondItem="c8u-6z-Ng8" secondAttribute="bottom" constant="8" id="0kR-ht-zMt"/>
                             <constraint firstItem="H3n-Zj-LfX" firstAttribute="top" secondItem="LMf-Lm-OXs" secondAttribute="bottom" constant="8" symbolic="YES" id="2Yq-7P-FAI"/>
                             <constraint firstItem="F0D-uo-aGS" firstAttribute="centerX" secondItem="2a7-j4-hfx" secondAttribute="centerX" id="2nw-0h-NjJ"/>
                             <constraint firstItem="H3n-Zj-LfX" firstAttribute="baseline" secondItem="4El-GY-ygx" secondAttribute="baseline" id="6KX-DN-51y"/>
                             <constraint firstItem="ICA-Ge-VPp" firstAttribute="centerX" secondItem="2a7-j4-hfx" secondAttribute="centerX" id="7VZ-vi-CHJ"/>
-                            <constraint firstItem="kgK-Ll-47g" firstAttribute="top" secondItem="COK-h4-O49" secondAttribute="bottom" constant="53" id="AFG-KM-tCD"/>
-                            <constraint firstItem="ZdN-mT-Jvg" firstAttribute="top" secondItem="F0D-uo-aGS" secondAttribute="bottom" constant="634" id="HHV-tk-V6X"/>
-                            <constraint firstItem="H3n-Zj-LfX" firstAttribute="top" secondItem="2a7-j4-hfx" secondAttribute="top" constant="215" id="KK7-0m-kNI"/>
+                            <constraint firstItem="kgK-Ll-47g" firstAttribute="top" secondItem="COK-h4-O49" secondAttribute="bottom" constant="200" id="AFG-KM-tCD"/>
+                            <constraint firstItem="ZdN-mT-Jvg" firstAttribute="top" secondItem="F0D-uo-aGS" secondAttribute="bottom" constant="500" id="HHV-tk-V6X"/>
+                            <constraint firstItem="H3n-Zj-LfX" firstAttribute="top" secondItem="2a7-j4-hfx" secondAttribute="top" constant="350" id="KK7-0m-kNI"/>
+                            <constraint firstItem="aAn-8L-iGl" firstAttribute="trailing" secondItem="4El-GY-ygx" secondAttribute="trailing" id="Kvr-zA-0ho"/>
+                            <constraint firstItem="c8u-6z-Ng8" firstAttribute="top" secondItem="COK-h4-O49" secondAttribute="bottom" constant="90" id="SuK-V3-Wcx"/>
                             <constraint firstItem="LMf-Lm-OXs" firstAttribute="leading" secondItem="kgK-Ll-47g" secondAttribute="leading" id="UWf-4j-mVq"/>
                             <constraint firstItem="4El-GY-ygx" firstAttribute="trailing" secondItem="ICA-Ge-VPp" secondAttribute="trailing" id="Zl9-CO-AKq"/>
                             <constraint firstItem="H3n-Zj-LfX" firstAttribute="leading" secondItem="kgK-Ll-47g" secondAttribute="leading" id="cvR-q0-t05"/>
                             <constraint firstItem="kgK-Ll-47g" firstAttribute="leading" secondItem="ICA-Ge-VPp" secondAttribute="leading" id="jqU-SI-H7m"/>
                             <constraint firstItem="ICA-Ge-VPp" firstAttribute="width" secondItem="2a7-j4-hfx" secondAttribute="width" multiplier="0.8" id="mD3-0T-C8m"/>
                             <constraint firstItem="ICA-Ge-VPp" firstAttribute="top" secondItem="kgK-Ll-47g" secondAttribute="bottom" constant="8" symbolic="YES" id="mzg-rb-pDV"/>
+                            <constraint firstItem="c8u-6z-Ng8" firstAttribute="leading" secondItem="aAn-8L-iGl" secondAttribute="leading" id="wed-KM-oFN"/>
+                            <constraint firstItem="aAn-8L-iGl" firstAttribute="centerX" secondItem="2a7-j4-hfx" secondAttribute="centerX" id="ykA-hq-GQ2"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accessToken" destination="aAn-8L-iGl" id="Y6f-xv-qVS"/>
                         <outlet property="printerLabel" destination="H3n-Zj-LfX" id="EiA-up-J6e"/>
                         <outlet property="regionIdentifier" destination="ICA-Ge-VPp" id="fg2-Ac-GZ3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWg-LX-FjM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1040" y="443"/>
+            <point key="canvasLocation" x="1039.84375" y="442.96874999999994"/>
         </scene>
     </scenes>
     <resources>

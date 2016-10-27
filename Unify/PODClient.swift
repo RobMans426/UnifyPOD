@@ -60,9 +60,9 @@ class PODClient : NSObject,  URLSessionDelegate {
         }
     }
     
-    func register( branchId:String, completion:  @escaping (_ completed:Bool, _ branchName:String?) -> Void ) {
+    func register(accessToken:String, branchId:String, completion:  @escaping (_ completed:Bool, _ branchName:String?) -> Void ) {
         
-        let endpoint = URL(string: "\(apiBase)/register/\(branchId)")
+        let endpoint = URL(string: "\(apiBase)/register/\(branchId)/\(accessToken)")
         
         debugPrint("Endpoint:\(endpoint!)")
         

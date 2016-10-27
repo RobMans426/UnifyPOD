@@ -16,6 +16,7 @@ class PODSettings : NSObject {
     let KEY_PRINTER_URL = "pod_printer_url"
     let KEY_REGION_CODE = "pod_region_code"
     let KEY_AUTH_TOKEN = "pod_auth_token"
+    let KEY_ACCESS_TOKEN = "pod_access_token"
     
     override fileprivate init() {
         
@@ -73,6 +74,14 @@ class PODSettings : NSObject {
         return defaults.value( forKey: KEY_AUTH_TOKEN ) as? String
     }
     
+    func saveAccessToken( _ code:String) -> Void{
+        let defaults = UserDefaults.standard
+        defaults.setValue(code, forKey: KEY_ACCESS_TOKEN)
+    }
     
+    func getAccessToken() -> String? {
+        let defaults = UserDefaults.standard
+        return defaults.value( forKey: KEY_ACCESS_TOKEN ) as? String
+    }
     
 }
