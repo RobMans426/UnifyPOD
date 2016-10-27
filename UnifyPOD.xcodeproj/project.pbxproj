@@ -41,6 +41,7 @@
 		50FB9F661C5916DC00FABC78 /* 1Sum_Attract.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 50FB9F651C5916DC00FABC78 /* 1Sum_Attract.mp4 */; };
 		7509AD861DBF0B6800AFEC2D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */; };
 		7509AD881DBF0B7A00AFEC2D /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7527B2801DC1A51000A01DEA /* PODClient1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7527B27F1DC1A51000A01DEA /* PODClient1.swift */; };
 		818E58E724B582AF75661238 /* Pods_UnifyPOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCE62B9A6000ACB9B31794D /* Pods_UnifyPOD.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,7 @@
 		50FB9F631C57EB0900FABC78 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		50FB9F651C5916DC00FABC78 /* 1Sum_Attract.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1Sum_Attract.mp4; sourceTree = "<group>"; };
 		7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/UnifyPOD-astpkvtsifwrlrcqjloiiogbahna/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		7527B27F1DC1A51000A01DEA /* PODClient1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PODClient1.swift; sourceTree = "<group>"; };
 		76E2668DA7EADABB9B88BFDA /* Pods-UnifyPOD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnifyPOD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnifyPOD/Pods-UnifyPOD.debug.xcconfig"; sourceTree = "<group>"; };
 		BCCE62B9A6000ACB9B31794D /* Pods_UnifyPOD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnifyPOD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -222,18 +224,18 @@
 		50D6E19C1C565BB200D2AB95 /* Unify */ = {
 			isa = PBXGroup;
 			children = (
+				50D6E19D1C565BB200D2AB95 /* AppDelegate.swift */,
+				50D6E1A91C565BB200D2AB95 /* Info.plist */,
+				50FB9F461C565F0400FABC78 /* KioskApplication.swift */,
+				50FB9F471C565F0400FABC78 /* main.swift */,
+				50FB9F571C56B4B700FABC78 /* PODSettings.swift */,
+				25F48ADD1C6B8E3700D0E3CE /* UnifyBridgingHeader.h */,
+				7527B27D1DC1A3B000A01DEA /* Server */,
 				25FA713D1C639B41007B3EFF /* UI */,
 				25FA713C1C639B24007B3EFF /* Views */,
 				50FB9F501C5670E200FABC78 /* Supporting Files */,
 				50FB9F451C565ED900FABC78 /* Models */,
-				50D6E19D1C565BB200D2AB95 /* AppDelegate.swift */,
-				50FB9F4A1C56603D00FABC78 /* PODClient.swift */,
-				50FB9F461C565F0400FABC78 /* KioskApplication.swift */,
-				50FB9F471C565F0400FABC78 /* main.swift */,
-				50D6E1A91C565BB200D2AB95 /* Info.plist */,
-				50FB9F571C56B4B700FABC78 /* PODSettings.swift */,
 				25F48AD91C6B7FC200D0E3CE /* GoogleService-Info.plist */,
-				25F48ADD1C6B8E3700D0E3CE /* UnifyBridgingHeader.h */,
 			);
 			path = Unify;
 			sourceTree = "<group>";
@@ -259,6 +261,15 @@
 				50FB9F631C57EB0900FABC78 /* test.json */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7527B27D1DC1A3B000A01DEA /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				50FB9F4A1C56603D00FABC78 /* PODClient.swift */,
+				7527B27F1DC1A51000A01DEA /* PODClient1.swift */,
+			);
+			name = Server;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,6 +480,7 @@
 				50323CC41C84A6EE00C67935 /* CategoryIcon.swift in Sources */,
 				50FB9F581C56B4B700FABC78 /* PODSettings.swift in Sources */,
 				50FB9F491C565F0400FABC78 /* main.swift in Sources */,
+				7527B2801DC1A51000A01DEA /* PODClient1.swift in Sources */,
 				50FB9F5E1C57DDCE00FABC78 /* DocumentTreeSectionCell.swift in Sources */,
 				50FB9F621C57E40500FABC78 /* Content.swift in Sources */,
 				50D6E19E1C565BB200D2AB95 /* AppDelegate.swift in Sources */,

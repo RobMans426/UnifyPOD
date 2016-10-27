@@ -4,6 +4,7 @@ use_frameworks!
 target 'UnifyPOD' do
     pod 'SwiftyJSON'
     pod 'Google/Analytics'
+    pod 'Alamofire', '~> 4.0'
 end
 
 post_install do |installer|

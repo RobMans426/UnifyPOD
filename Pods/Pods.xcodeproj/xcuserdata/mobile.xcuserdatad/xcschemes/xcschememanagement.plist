@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>04B1DCFFA9A9205BB083826B5440114B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6ED9A2545672DDAD1F6AC5A2DAB796D9</key>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>92BB131FA876445E027D20AE23EA7B5F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D9F45B562F222CEA153104C64BE59DE9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ECDD7089E5C2EB43098437E3B4DCC4D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
