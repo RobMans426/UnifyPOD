@@ -168,7 +168,12 @@ class BaseViewController: UIViewController {
     }
     
     func hideProgress() {
-        _ = [MBProgressHUD.hide(for: self.view, animated: true)]
+        DispatchQueue.main.async(execute: {
+            
+            _ = [MBProgressHUD.hide(for: self.view, animated: true)]
+
+        })
+
         self.view.isUserInteractionEnabled = true
     }
     
