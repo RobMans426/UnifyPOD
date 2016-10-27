@@ -73,7 +73,7 @@ class HomeViewController : BaseViewController {
         debugPrint( "Reload Data!" )
         self.showProgress()
         //register
-        PODClient.instance.register(accessToken:PODSettings.instance.getAccessToken()! ,branchId: PODSettings.instance.getRegionCode()!, completion: { (completed:Bool, branchName:String?) -> Void in
+        PODClient.instance.register(accessToken:PODSettings.instance.getAccessToken()!, branchId: PODSettings.instance.getRegionCode()!, completion: { (completed:Bool, branchName:String?) -> Void in
             
             if( completed ) {
                 

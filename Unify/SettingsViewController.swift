@@ -22,10 +22,11 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
     override func viewDidLoad() {
         
         let regionCode = settings.getRegionCode()
+        let accessToken = settings.getAccessToken()
         printer = settings.getPrinter()
         
         self.regionIdentifier.text = regionCode
-        
+        self.accessToken.text = accessToken
         if( printer != nil ) {
             self.printerLabel.text = printer?.displayName
         }
@@ -73,7 +74,7 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(UIAlertAction) -> Void in
                 
                 self.settings.saveRegionCode( self.regionIdentifier.text! )
-                
+                self.settings.saveAccessToken(self.accessToken.text!)
                 self.checkRegistration()
                 
             })
