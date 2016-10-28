@@ -39,7 +39,16 @@
 		50FB9F621C57E40500FABC78 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB9F611C57E40500FABC78 /* Content.swift */; };
 		50FB9F641C57EB0900FABC78 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 50FB9F631C57EB0900FABC78 /* test.json */; };
 		50FB9F661C5916DC00FABC78 /* 1Sum_Attract.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 50FB9F651C5916DC00FABC78 /* 1Sum_Attract.mp4 */; };
+		758A0E5E1DC3DC860070D4DC /* AnalyticsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 758A0E551DC3DC860070D4DC /* AnalyticsDataModel.xcdatamodeld */; };
+		758A0E5F1DC3DC860070D4DC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758A0E571DC3DC860070D4DC /* DataController.swift */; };
+		758A0E601DC3DC860070D4DC /* EmailedDocs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758A0E581DC3DC860070D4DC /* EmailedDocs.swift */; };
+		758A0E611DC3DC860070D4DC /* EmailedDocs+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758A0E591DC3DC860070D4DC /* EmailedDocs+CoreDataProperties.swift */; };
+		758A0E621DC3DC860070D4DC /* PageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758A0E5A1DC3DC860070D4DC /* PageViews.swift */; };
+		758A0E631DC3DC860070D4DC /* PageViews+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758A0E5B1DC3DC860070D4DC /* PageViews+CoreDataProperties.swift */; };
+		758A0E641DC3DC860070D4DC /* PrintedDocs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758A0E5C1DC3DC860070D4DC /* PrintedDocs.swift */; };
+		758A0E651DC3DC860070D4DC /* PrintedDocs+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758A0E5D1DC3DC860070D4DC /* PrintedDocs+CoreDataProperties.swift */; };
 		75CBB7961DC28D1400A02E08 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CBB7951DC28D1400A02E08 /* MBProgressHUD.m */; };
+		75EE29581DC3C54800D0C6AF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75EE29571DC3C54800D0C6AF /* CoreData.framework */; };
 		818E58E724B582AF75661238 /* Pods_UnifyPOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCE62B9A6000ACB9B31794D /* Pods_UnifyPOD.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,8 +107,17 @@
 		50FB9F631C57EB0900FABC78 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		50FB9F651C5916DC00FABC78 /* 1Sum_Attract.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1Sum_Attract.mp4; sourceTree = "<group>"; };
 		7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/UnifyPOD-astpkvtsifwrlrcqjloiiogbahna/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		758A0E561DC3DC860070D4DC /* AnalyticsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnalyticsDataModel.xcdatamodel; sourceTree = "<group>"; };
+		758A0E571DC3DC860070D4DC /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		758A0E581DC3DC860070D4DC /* EmailedDocs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailedDocs.swift; sourceTree = "<group>"; };
+		758A0E591DC3DC860070D4DC /* EmailedDocs+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EmailedDocs+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		758A0E5A1DC3DC860070D4DC /* PageViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViews.swift; sourceTree = "<group>"; };
+		758A0E5B1DC3DC860070D4DC /* PageViews+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PageViews+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		758A0E5C1DC3DC860070D4DC /* PrintedDocs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintedDocs.swift; sourceTree = "<group>"; };
+		758A0E5D1DC3DC860070D4DC /* PrintedDocs+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PrintedDocs+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		75CBB7941DC28D1400A02E08 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		75CBB7951DC28D1400A02E08 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		75EE29571DC3C54800D0C6AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		76E2668DA7EADABB9B88BFDA /* Pods-UnifyPOD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnifyPOD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnifyPOD/Pods-UnifyPOD.debug.xcconfig"; sourceTree = "<group>"; };
 		BCCE62B9A6000ACB9B31794D /* Pods_UnifyPOD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnifyPOD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -109,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75EE29581DC3C54800D0C6AF /* CoreData.framework in Frameworks */,
 				818E58E724B582AF75661238 /* Pods_UnifyPOD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +198,7 @@
 		3F2EB099DCAEDE4FF7552314 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				75EE29571DC3C54800D0C6AF /* CoreData.framework */,
 				7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */,
 				BCCE62B9A6000ACB9B31794D /* Pods_UnifyPOD.framework */,
 			);
@@ -228,6 +248,14 @@
 		50FB9F451C565ED900FABC78 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				758A0E551DC3DC860070D4DC /* AnalyticsDataModel.xcdatamodeld */,
+				758A0E571DC3DC860070D4DC /* DataController.swift */,
+				758A0E581DC3DC860070D4DC /* EmailedDocs.swift */,
+				758A0E591DC3DC860070D4DC /* EmailedDocs+CoreDataProperties.swift */,
+				758A0E5A1DC3DC860070D4DC /* PageViews.swift */,
+				758A0E5B1DC3DC860070D4DC /* PageViews+CoreDataProperties.swift */,
+				758A0E5C1DC3DC860070D4DC /* PrintedDocs.swift */,
+				758A0E5D1DC3DC860070D4DC /* PrintedDocs+CoreDataProperties.swift */,
 				50FB9F5F1C57E39700FABC78 /* Category.swift */,
 				50FB9F611C57E40500FABC78 /* Content.swift */,
 				50323CC31C84A6EE00C67935 /* CategoryIcon.swift */,
@@ -473,20 +501,28 @@
 				50FB9F481C565F0400FABC78 /* KioskApplication.swift in Sources */,
 				50FB9F4B1C56603D00FABC78 /* PODClient.swift in Sources */,
 				50FB9F5C1C57DB7F00FABC78 /* DocumentTreeViewController.swift in Sources */,
+				758A0E641DC3DC860070D4DC /* PrintedDocs.swift in Sources */,
 				50FB9F541C567A7500FABC78 /* HomeViewController.swift in Sources */,
 				50323CC41C84A6EE00C67935 /* CategoryIcon.swift in Sources */,
 				50FB9F581C56B4B700FABC78 /* PODSettings.swift in Sources */,
+				758A0E601DC3DC860070D4DC /* EmailedDocs.swift in Sources */,
 				50FB9F491C565F0400FABC78 /* main.swift in Sources */,
+				758A0E631DC3DC860070D4DC /* PageViews+CoreDataProperties.swift in Sources */,
 				75CBB7961DC28D1400A02E08 /* MBProgressHUD.m in Sources */,
+				758A0E5E1DC3DC860070D4DC /* AnalyticsDataModel.xcdatamodeld in Sources */,
 				50FB9F5E1C57DDCE00FABC78 /* DocumentTreeSectionCell.swift in Sources */,
+				758A0E651DC3DC860070D4DC /* PrintedDocs+CoreDataProperties.swift in Sources */,
+				758A0E5F1DC3DC860070D4DC /* DataController.swift in Sources */,
 				50FB9F621C57E40500FABC78 /* Content.swift in Sources */,
 				50D6E19E1C565BB200D2AB95 /* AppDelegate.swift in Sources */,
 				50FB9F4F1C5668EC00FABC78 /* PDFViewController.swift in Sources */,
 				50FB9F4D1C56658300FABC78 /* BaseViewController.swift in Sources */,
 				50FB9F561C569B2500FABC78 /* SettingsViewController.swift in Sources */,
 				5025D8341C5949C5002FF8F4 /* PopupEmailViewController.swift in Sources */,
+				758A0E611DC3DC860070D4DC /* EmailedDocs+CoreDataProperties.swift in Sources */,
 				5025D8321C5949B3002FF8F4 /* PopupSuccessViewController.swift in Sources */,
 				50FB9F601C57E39700FABC78 /* Category.swift in Sources */,
+				758A0E621DC3DC860070D4DC /* PageViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,6 +809,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		758A0E551DC3DC860070D4DC /* AnalyticsDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				758A0E561DC3DC860070D4DC /* AnalyticsDataModel.xcdatamodel */,
+			);
+			currentVersion = 758A0E561DC3DC860070D4DC /* AnalyticsDataModel.xcdatamodel */;
+			path = AnalyticsDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 50D6E1921C565BB200D2AB95 /* Project object */;
 }

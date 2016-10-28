@@ -4,6 +4,7 @@ use_frameworks!
 target 'UnifyPOD' do
     pod 'SwiftyJSON'
     pod 'Google/Analytics'
+      pod 'sqlite3', inhibit_warnings: true
 end
 
 post_install do |installer|

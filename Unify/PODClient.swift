@@ -8,6 +8,8 @@
 
 import Foundation
 import SwiftyJSON
+import CoreData
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
     case let (l?, r?):
@@ -31,6 +33,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 class PODClient : NSObject,  URLSessionDelegate {
     
     static let instance = PODClient()
+    let fetchMOC = DataController().managedObjectContext
     
     var apiKey : String = ""
     var apiBase : String = "https://unify.adrenalineamp.com/api"
@@ -565,5 +568,317 @@ class PODClient : NSObject,  URLSessionDelegate {
         completionHandler(Foundation.URLSession.AuthChallengeDisposition.useCredential,credential)
         
     }
+   
+    func sendHitDetails(completionHandler: @escaping (_ success: Bool?) -> Void) {
+        
+        let endpoint = URL(string: "\(apiBase)/hits.php")
+        var request = URLRequest(url: endpoint!)
+        let session = createSession()
+        let data : JSON = self.fetchHits()
+        
+        request.httpMethod = "POST"
+        
+        do {
+            
+            try request.httpBody = data.rawData()
+           
+            let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
+                
+                if( error != nil ) {
+                    debugPrint("ERROR: downloadData: \(error?.localizedDescription)")
+                    completionHandler( false)
+                } else {
+                    
+                    completionHandler( true)
+                    
+                }
+                
+            })
+            
+            task.resume()
+            
+            
+        } catch {
+            print(error)
+        }
+        
+    }
     
+    
+    func sendDocsEmailed(completionHandler: @escaping (_ success: Bool?) -> Void) {
+        
+        let endpoint = URL(string: "\(apiBase)/emails.php")
+        var request = URLRequest(url: endpoint!)
+        let session = createSession()
+        let data : JSON = self.fetchEmailedDocs()
+        
+        request.httpMethod = "POST"
+        
+        do {
+            
+            try request.httpBody = data.rawData()
+            
+            let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
+                
+                if( error != nil ) {
+                    debugPrint("ERROR: downloadData: \(error?.localizedDescription)")
+                    completionHandler(false)
+                } else {
+                    
+                    completionHandler( true)
+                    
+                }
+                
+            })
+            
+            task.resume()
+            
+            
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    
+    func sendDocsPrinted(completionHandler: @escaping (_ success: Bool?) -> Void) {
+        
+        let endpoint = URL(string: "\(apiBase)/prints.php")
+        var request = URLRequest(url: endpoint!)
+        let session = createSession()
+        let data : JSON = self.fetchPrintedDocs()
+        
+        request.httpMethod = "POST"
+        
+        do {
+            
+            try request.httpBody = data.rawData()
+
+            let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
+                
+                if( error != nil ) {
+                    debugPrint("ERROR: downloadData: \(error?.localizedDescription)")
+                    completionHandler(false)
+                } else {
+                    
+                    completionHandler(true)
+                    
+                }
+                
+            })
+            
+            task.resume()
+            
+            
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    
+    
+    func fetchHits() -> JSON {
+        
+        var jsonHitsArray = Array<JSON>()
+        let fetchRequestViews: NSFetchRequest<PageViews> = PageViews.fetchRequest()
+        let hitsData = NSMutableData()
+        var dataDict = [String : String]()
+        
+        do {
+            let fetchedPageHits = try fetchMOC.fetch(fetchRequestViews as! NSFetchRequest<NSFetchRequestResult>) as! [PageViews]
+            
+            
+            //log all page hits
+            for views in fetchedPageHits {
+                
+                if (views.branchId != nil && views.documentName != nil && views.documentURL != nil) {
+                    
+                    dataDict["id"] = String(describing: views.id!)
+                    dataDict["branch_id"] = views.branchId
+                    dataDict["name"] = views.documentName
+                    dataDict["url"] = views.documentURL
+                    
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: dataDict, options: JSONSerialization.WritingOptions.prettyPrinted)
+                        
+                        hitsData.append(jsonData)
+                        
+                        
+                        jsonHitsArray.append(JSON(data: jsonData))
+                        
+                    } catch let error as NSError {
+                        debugPrint(error)
+                    }
+                    
+                }
+                
+            }
+            
+            let jsonDict = JSON(["hits" : JSON(jsonHitsArray)])
+            
+            
+            //return the dictionary in JSON encoded format
+            return jsonDict
+            
+        } catch {
+            fatalError("An error has occurred: \(error)")
+        }
+        
+    }
+    
+    
+    func fetchPrintedDocs() -> JSON {
+        
+        var jsonPrintedArray = Array<JSON>()
+        let fetchRequestPrints: NSFetchRequest<PrintedDocs> = PrintedDocs.fetchRequest()
+        
+        let printedData = NSMutableData()
+        var dataPrintedDict = [String : String]()
+        
+        do {
+            let fetchedPagePrints = try fetchMOC.fetch(fetchRequestPrints as! NSFetchRequest<NSFetchRequestResult>) as! [PrintedDocs]
+            
+            
+            //log all page prints
+            for prints in fetchedPagePrints {
+                
+                if (prints.branchId != nil && prints.documentName != nil && prints.documentURL != nil) {
+                    
+                    dataPrintedDict["id"] = String(describing: prints.id!)
+                    dataPrintedDict["branch_id"] = prints.branchId
+                    dataPrintedDict["name"] = prints.documentName
+                    dataPrintedDict["url"] = prints.documentURL
+                    
+                    do {
+                        let jsonPrintedData = try JSONSerialization.data(withJSONObject: dataPrintedDict, options: JSONSerialization.WritingOptions.prettyPrinted)
+                        
+                        printedData.append(jsonPrintedData)
+                        
+                        
+                        jsonPrintedArray.append(JSON(data: jsonPrintedData))
+                        
+                    } catch let error as NSError {
+                        debugPrint(error)
+                    }
+                    
+                }
+                
+            }
+            
+            let jsonPrintedDict = JSON(["prints" : JSON(jsonPrintedArray)])
+            
+            
+            //return the dictionary in JSON encoded format
+            return jsonPrintedDict
+            
+        } catch {
+            fatalError("An error has occurred: \(error)")
+        }
+        
+    }
+    
+    
+    func fetchEmailedDocs() -> JSON {
+        
+        var jsonEmailedArray = Array<JSON>()
+        let fetchRequestPrints: NSFetchRequest<EmailedDocs> = EmailedDocs.fetchRequest()
+        
+        let emailedData = NSMutableData()
+        var dataEmailedDict = [String : String]()
+        
+        do {
+            let fetchedPageEmails = try fetchMOC.fetch(fetchRequestPrints as! NSFetchRequest<NSFetchRequestResult>) as! [EmailedDocs]
+            
+            
+            //log all page emails
+            for emails in fetchedPageEmails {
+                
+                if (emails.branchId != nil && emails.documentName != nil && emails.documentURL != nil) {
+                    
+                    dataEmailedDict["id"] = String(describing: emails.id!)
+                    dataEmailedDict["branch_id"] = emails.branchId
+                    dataEmailedDict["name"] = emails.documentName
+                    dataEmailedDict["url"] = emails.documentURL
+                    
+                    do {
+                    
+                        let jsonEmailedData = try JSONSerialization.data(withJSONObject: dataEmailedDict, options: JSONSerialization.WritingOptions.prettyPrinted)
+                        
+                        emailedData.append(jsonEmailedData)
+                        
+                        
+                        jsonEmailedArray.append(JSON(data: jsonEmailedData))
+                        
+                    } catch let error as NSError {
+                        debugPrint(error)
+                    }
+                    
+                }
+                
+            }
+            
+            let jsonEmailedDict = JSON(["emails" : JSON(jsonEmailedArray)])
+            //            debugPrint("FINAL JSON: \(jsonDict)")
+            
+            //return the dictionary in JSON encoded format
+            return jsonEmailedDict
+            
+        } catch {
+            fatalError("An error has occurred: \(error)")
+        }
+        
+    }
+    
+    
+    
+    
+    func clearCoreData() {
+        
+        let fetchRequest: NSFetchRequest<PageViews> = PageViews.fetchRequest()
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+        
+        do {
+            
+            try fetchMOC.execute(batchDeleteRequest)
+            
+        } catch {
+            
+            fatalError("An error has occurred: \(error)")
+        }
+        
+    }
+    
+    func clearCorePrintedData() {
+        
+        let fetchRequest: NSFetchRequest<PrintedDocs> = PrintedDocs.fetchRequest()
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+        
+        do {
+            
+            try fetchMOC.execute(batchDeleteRequest)
+            
+        } catch {
+            
+            fatalError("An error has occurred: \(error)")
+        }
+        
+    }
+    
+    
+    func clearCoreEmailedData() {
+        
+        let fetchRequest: NSFetchRequest<EmailedDocs> = EmailedDocs.fetchRequest()
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+        
+        do {
+            
+            try fetchMOC.execute(batchDeleteRequest)
+            
+        } catch {
+            
+            fatalError("An error has occurred: \(error)")
+        }
+        
+    }
 }

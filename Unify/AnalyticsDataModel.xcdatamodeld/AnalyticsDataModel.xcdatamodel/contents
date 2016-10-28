@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G1004" minimumToolsVersion="Xcode 7.0">
+    <entity name="EmailedDocs" representedClassName=".EmailedDocs" syncable="YES">
+        <attribute name="branchId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="documentName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="documentURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="PageViews" representedClassName=".PageViews" syncable="YES">
+        <attribute name="branchId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="documentName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="documentURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="PrintedDocs" representedClassName=".PrintedDocs" syncable="YES">
+        <attribute name="branchId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="documentName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="documentURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="PageViews" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="PrintedDocs" positionX="-27" positionY="45" width="128" height="105"/>
+        <element name="EmailedDocs" positionX="0" positionY="81" width="128" height="105"/>
+    </elements>
+</model>

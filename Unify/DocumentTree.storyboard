@@ -27,7 +27,7 @@
         <scene sceneID="XGf-9w-SIK">
             <objects>
                 <navigationController navigationBarHidden="YES" id="Nmn-ST-k9T" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LO7-er-SFg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LO7-er-SFg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -48,7 +48,7 @@
                         <viewControllerLayoutGuide type="bottom" id="CZ4-6I-tWS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xkJ-5J-jeT">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAa-r5-f68" userLabel="HeaderView">
@@ -108,10 +108,10 @@
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocumentTreeMainSectionCell" rowHeight="180" id="pbr-ko-muX" userLabel="DocumentTreeMainSectionCell" customClass="DocumentTreeSectionCell" customModule="UnifyPOD" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="767.5" height="180"/>
+                                        <rect key="frame" x="0.0" y="28" width="1024" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pbr-ko-muX" id="u2U-jw-HLn">
-                                            <frame key="frameInset" width="767.5" height="179"/>
+                                            <frame key="frameInset" width="1024" height="179"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_temp_off" translatesAutoresizingMaskIntoConstraints="NO" id="Uju-hZ-INp"/>
@@ -148,10 +148,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocumentTreeSubSectionCell" rowHeight="180" id="g4h-BE-8qQ" userLabel="DocumentTreeSubSectionCell" customClass="DocumentTreeSectionCell" customModule="UnifyPOD" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="208" width="767.5" height="180"/>
+                                        <rect key="frame" x="0.0" y="208" width="1024" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g4h-BE-8qQ" id="hnz-hA-3Kn">
-                                            <frame key="frameInset" width="767.5" height="179"/>
+                                            <frame key="frameInset" width="1024" height="179"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_white" translatesAutoresizingMaskIntoConstraints="NO" id="ixf-o8-mej"/>
@@ -179,10 +179,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocumentTreeLeafCell" rowHeight="180" id="WGQ-xz-CUy" userLabel="DocumentTreeLeafCell" customClass="DocumentTreeSectionCell" customModule="UnifyPOD" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="388" width="768" height="180"/>
+                                        <rect key="frame" x="0.0" y="388" width="1024" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WGQ-xz-CUy" id="bOc-5x-wAK">
-                                            <frame key="frameInset" width="767.5" height="179"/>
+                                            <frame key="frameInset" width="1024" height="179"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECTION TITLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDZ-Ud-MbR">
@@ -271,7 +271,7 @@
                         <viewControllerLayoutGuide type="bottom" id="pK1-55-hb6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jA1-lJ-EqE">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rt-Lk-FRB">
@@ -286,7 +286,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygd-7G-bUz" userLabel="ViewPrint">
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="printer_off" translatesAutoresizingMaskIntoConstraints="NO" id="yQO-Vu-L3I"/>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PrintThis Document" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1I-XW-pjO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Print this Document" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1I-XW-pjO">
                                         <fontDescription key="fontDescription" name="Swagg-MediumItalic" family="Swagg" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -369,7 +369,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Luu-Oh-Ccs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lKe-a4-tMl">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qsH-Y4-4F8" userLabel="ModalView">
@@ -472,7 +472,7 @@
                         <viewControllerLayoutGuide type="bottom" id="EJD-UU-6B5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XqP-c3-OVj">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Hp-3Y-XeB" userLabel="ModalView">

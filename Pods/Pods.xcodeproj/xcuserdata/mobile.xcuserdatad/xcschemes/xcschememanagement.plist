@@ -19,20 +19,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>sqlite3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>04B1DCFFA9A9205BB083826B5440114B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6ED9A2545672DDAD1F6AC5A2DAB796D9</key>
+		<key>2B53ED06D1C2BA1F55199AD511B9A85F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>92BB131FA876445E027D20AE23EA7B5F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ADC6B444DAD72EB42D58F44BC7A35694</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D2C0E8F9C9049D8285510E653312AA50</key>
 		<dict>
 			<key>primary</key>
 			<true/>

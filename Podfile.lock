@@ -21,10 +21,14 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.0)
   - GoogleToolboxForMac/NSData+zlib (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
+  - sqlite3 (3.15.0):
+    - sqlite3/common (= 3.15.0)
+  - sqlite3/common (3.15.0)
   - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
   - Google/Analytics
+  - sqlite3
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -36,8 +40,9 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
+  sqlite3: 4ba9cf1ded09a1442e17c92c82638787076d877d
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: 6e71d8c5ea537209f8e0560f27692536cac67d18
+PODFILE CHECKSUM: ab4f51d76a1b4d094a3812307b2ec3ddd1aa16bf
 
 COCOAPODS: 1.1.1

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Google
 import AVFoundation
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
     case let (l?, r?):
@@ -93,7 +94,7 @@ class BaseViewController: UIViewController {
             debugPrint("Start Attract Loop \(self)")
         }
         
-        
+
         loadingView = UIView(frame: self.view.frame)
         loadingView?.backgroundColor = UIColor.black
         
@@ -120,7 +121,6 @@ class BaseViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.attractLoopEnded(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.loadingAVPlayer!.currentItem)
         
         self.loadingAVPlayer!.play()
-        
         
         delegate.isVideoUp = true
     }

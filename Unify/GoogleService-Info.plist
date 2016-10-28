@@ -3,11 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>TRACKING_ID</key>
-	<string>UA-82743400-1</string>
+	<string>UA-86473050-1</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.adrenaline.printondemand.Unify</string>
+	<string>com.adrenaline.unify</string>
+	<key>PROJECT_ID</key>
+	<string>firebase-unifypod</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -19,6 +21,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<false/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:599395787766:ios:76c4ccae63f64b70</string>
+	<string>1:762493225908:ios:b01fa1c0bbef507f</string>
 </dict>
 </plist>
