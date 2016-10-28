@@ -71,7 +71,7 @@ class HomeViewController : BaseViewController {
     func loadData( _ completion: @escaping (_ completed:Bool) -> Void ) {
         
         debugPrint( "Reload Data!" )
-        self.showProgress()
+        self.showProgress(message: "Please wait while your content loads", showBackbround: true)
         //register
         PODClient.instance.register(accessToken:PODSettings.instance.getAccessToken()!, branchId: PODSettings.instance.getRegionCode()!, completion: { (completed:Bool, branchName:String?) -> Void in
             
@@ -91,7 +91,7 @@ class HomeViewController : BaseViewController {
                                 if (completed){
                                     self.hideProgress()
                                 } else{
-                                    debugPrint("Error: LoadIcon failed")
+                                    debugPrint("Error: LoadVideo failed")
                                     completion( false )
                                     self.hideProgress()
                                 }
@@ -133,12 +133,12 @@ class HomeViewController : BaseViewController {
     func completeSetup() {
         
         super.startAttractLoop()
-        NotificationCenter.default.addObserver(self, selector: Selector(("appTimeout")), name: NSNotification.Name(rawValue: "KioskApplicationTimeout"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.appTimeout), name: NSNotification.Name(rawValue: "KioskApplicationTimeout"), object: nil)
         
     }
     
     func viewTapped() {
-        
+
         let sb = UIStoryboard(name: "DocumentTree", bundle: nil)
         let vc = sb.instantiateInitialViewController()!
         self.present(vc, animated: true, completion: {})

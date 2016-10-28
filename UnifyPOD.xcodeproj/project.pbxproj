@@ -39,8 +39,6 @@
 		50FB9F621C57E40500FABC78 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB9F611C57E40500FABC78 /* Content.swift */; };
 		50FB9F641C57EB0900FABC78 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 50FB9F631C57EB0900FABC78 /* test.json */; };
 		50FB9F661C5916DC00FABC78 /* 1Sum_Attract.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 50FB9F651C5916DC00FABC78 /* 1Sum_Attract.mp4 */; };
-		7509AD861DBF0B6800AFEC2D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */; };
-		7509AD881DBF0B7A00AFEC2D /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7509AD851DBF0B6800AFEC2D /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		75CBB7961DC28D1400A02E08 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CBB7951DC28D1400A02E08 /* MBProgressHUD.m */; };
 		818E58E724B582AF75661238 /* Pods_UnifyPOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCE62B9A6000ACB9B31794D /* Pods_UnifyPOD.framework */; };
 /* End PBXBuildFile section */
@@ -61,20 +59,6 @@
 			remoteInfo = Unify;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		7509AD891DBF0B7B00AFEC2D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				7509AD881DBF0B7A00AFEC2D /* SwiftyJSON.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		255C95FA1C63ABAA005DC0E9 /* Brandon_light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brandon_light.otf; sourceTree = "<group>"; };
@@ -125,7 +109,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7509AD861DBF0B6800AFEC2D /* SwiftyJSON.framework in Frameworks */,
 				818E58E724B582AF75661238 /* Pods_UnifyPOD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,7 +278,6 @@
 				50D6E1981C565BB200D2AB95 /* Resources */,
 				CC440BF81F87165A8B08B196 /* [CP] Embed Pods Frameworks */,
 				48337741A4936A9EFDC45365 /* [CP] Copy Pods Resources */,
-				7509AD891DBF0B7B00AFEC2D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -653,7 +635,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76E2668DA7EADABB9B88BFDA /* Pods-UnifyPOD.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -679,7 +660,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C205E0E09880D50FC6FCF36 /* Pods-UnifyPOD.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";

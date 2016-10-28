@@ -69,8 +69,7 @@ class BaseViewController: UIViewController {
         debugPrint("Add GA Hit")
         let tracker = GAI.sharedInstance().defaultTracker
         tracker?.set(kGAIScreenName, value: trackedName )
-//        let screenView = GAIDictionaryBuilder.createScreenView().build() as [AnyHashable: Any]
-//        tracker.send( screenView )
+
         let screenView = GAIDictionaryBuilder.createScreenView().build() as NSDictionary? as? [AnyHashable: Any] ?? [:]
         tracker?.send( screenView )
         
@@ -81,10 +80,10 @@ class BaseViewController: UIViewController {
     func startAttractLoop() {
         
         //only start if we are showing
-        if( !self.isViewLoaded || /*self.view.window == false */ self.view.window == nil) {
-            debugPrint("View not viewable")
-            return
-        }
+//        if( !self.isViewLoaded || /*self.view.window == false */ self.view.window == nil) {
+//            debugPrint("View not viewable")
+//            return
+//        }
         
         let delegate = UIApplication.shared.delegate as! AppDelegate
         if( delegate.isVideoUp ) {
@@ -96,7 +95,7 @@ class BaseViewController: UIViewController {
         
         
         loadingView = UIView(frame: self.view.frame)
-        loadingView?.backgroundColor = UIColor.white
+        loadingView?.backgroundColor = UIColor.black
         
         let tempDir = NSTemporaryDirectory()
         let fullPath = "\(tempDir)attract_loop.mp4"
@@ -162,9 +161,19 @@ class BaseViewController: UIViewController {
         self.present(vc, animated: true, completion: {})        
     }
     
-    func showProgress(){
-        _ = [MBProgressHUD.showAdded(to: self.view, animated: true)]
+    func showProgress(message: String, showBackbround: Bool){
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.label.text = message
+        hud.label.textColor = UIColor.white
+        if showBackbround {
+            hud.backgroundColor = UIColor.black
+        } else {
+            hud.backgroundColor = UIColor.clear
+        }
+     
+        hud.isUserInteractionEnabled = false
         self.view.isUserInteractionEnabled = false
+        
     }
     
     func hideProgress() {
@@ -173,7 +182,6 @@ class BaseViewController: UIViewController {
             _ = [MBProgressHUD.hide(for: self.view, animated: true)]
 
         })
-
         self.view.isUserInteractionEnabled = true
     }
     

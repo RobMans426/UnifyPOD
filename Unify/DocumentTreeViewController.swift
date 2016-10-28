@@ -58,7 +58,7 @@ class DocumentTreeViewController : BaseViewController, UITableViewDataSource, UI
       
     override func viewDidLoad() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.appTimeout), name: NSNotification.Name(rawValue: "KioskApplicationTimeout"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DocumentTreeViewController.appTimeout), name: NSNotification.Name(rawValue: "KioskApplicationTimeout"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(DocumentTreeViewController.returnToMain), name: NSNotification.Name(rawValue: "DocumentTreeReturnToMain"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(DocumentTreeViewController.closeModals), name: NSNotification.Name(rawValue: "DocumentTreeCloseModals"), object: nil)
         

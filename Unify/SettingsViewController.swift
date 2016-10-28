@@ -105,7 +105,7 @@ class SettingsViewController : BaseViewController, UIPrinterPickerControllerDele
     
     fileprivate func checkRegistration() {
         
-        self.showProgress()
+        self.showProgress(message: "", showBackbround: false)
         PODClient.instance.register(accessToken: self.accessToken.text!, branchId: self.regionIdentifier.text!, completion: {(completed :Bool, branchName: String? ) -> Void in
             
             if( completed ) {

@@ -382,8 +382,8 @@ class PODClient : NSObject,  URLSessionDelegate {
         message["subject"] = "Your Requested UNIFY Financial Credit Union Product Sheet"
         
         
-        let messageHTML = "Thank you for stopping by our UNIFY branch today. Here is the information you requested.Questions or need additional information? Phone our Contact Center at 877.254.9328 or visit us at UnifyFCU.com.<br /><br /><a href='\(documentURL)'>\(documentURL)</a>"
-        let messageText = "Thank you for stopping by our UNIFY branch today. Here is the information you requested.Questions or need additional information? Phone our Contact Center at 877.254.9328 or visit us at UnifyFCU.com.\(documentURL)"
+        let messageHTML = "Hi There!<br><br>Thank you for stopping by our UNIFY branch today. Below is a link with the information you requested while exploring our Products & Services kiosk.<br><br>If you have questions or need additional information, please phone our 24/7 Contact Center at 877.254.9328. Or visit us at UnifyFCU.com.<br><br>We look forward to seeing you again soon!<br /><br /><a href='\(documentURL)'>\(documentURL)</a>"
+        let messageText = "Hi There!\n\n  Thanks for stopping by our UNIFY branch today. Below is a link with the information you requested while exploring our Products & Services kiosk.\n\nIf you have questions or need additional information, please phone our 24/7 Contact Center at 877.254.9328. Or visit us at UnifyFCU.com.\n\nWe look forward to seeing you again soon!\n\n\(documentURL)"
         
         message["html"].string = messageHTML
         message["text"].string = messageText
@@ -513,10 +513,10 @@ class PODClient : NSObject,  URLSessionDelegate {
                     completionHandler(false)
                 }
                 
-            } catch {
+            } /*catch {
                 print(error)
                 completionHandler(false)
-            }
+            }*/
             
         })
         
