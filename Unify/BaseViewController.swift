@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Google
 import AVFoundation
+import CoreData
 
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
@@ -35,6 +36,10 @@ class BaseViewController: UIViewController {
     
     var loadingView : UIView?
     var loadingAVPlayer : AVPlayer?
+    let settingControl = PODSettings.instance
+    let clientControl = PODClient.instance
+    
+    var marrHitData : NSMutableArray!
     
     func appTimeout() {
         debugPrint("App Timeout: Call Start Attract Loop")
@@ -43,6 +48,18 @@ class BaseViewController: UIViewController {
     
     func getGAIName() -> String? {
         return nil
+    }
+    
+    func getGAIid() -> String? {
+        return nil
+    }
+    
+    func getGAIUrl() -> String? {
+        return nil
+    }
+    
+    func  getRegionCode() -> String? {
+        return settingControl.getRegionCode()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,11 +83,36 @@ class BaseViewController: UIViewController {
             trackedName = className
         }
         
+        var trackedId = self.getGAIid()
+        if (trackedId == nil){
+            trackedId = nil
+        }
+        
+        var trackedUrl = self.getGAIUrl()
+        if (trackedUrl == nil){
+            trackedUrl = nil
+        }
+        
+        var userId = self.getRegionCode()
+        if (userId == nil){
+            userId = nil
+        }
+        
+        if( trackedName != nil && trackedId != nil && trackedUrl != nil ){
+            
+            //clientControl.clearCoreData()
+            self.seedHits(id: Int(trackedId!),name: trackedName, url: trackedUrl, branchId: userId)
+        }
+        
+        
         //add tracking!
         debugPrint("Add GA Hit")
         let tracker = GAI.sharedInstance().defaultTracker
-        tracker?.set(kGAIScreenName, value: trackedName )
-
+        tracker?.set(kGAIDescription, value: trackedUrl)
+        tracker?.set(kGAITitle, value: trackedName)
+        tracker?.set(kGAIPage, value: trackedId)
+        tracker?.set(kGAIUserId, value: userId)
+        
         let screenView = GAIDictionaryBuilder.createScreenView().build() as NSDictionary? as? [AnyHashable: Any] ?? [:]
         tracker?.send( screenView )
         
@@ -185,4 +227,21 @@ class BaseViewController: UIViewController {
         self.view.isUserInteractionEnabled = true
     }
     
+    func seedHits(id: Int!,name: String!, url: String!, branchId: String!) {
+        
+        let seedMOC = DataController().managedObjectContext
+        let entity = NSEntityDescription.insertNewObject(forEntityName: "PageViews", into: seedMOC) as! PageViews
+        
+        
+        entity.setValue(id, forKey: "id")
+        entity.setValue(name, forKey: "documentName")
+        entity.setValue(url, forKey: "documentURL")
+        entity.setValue(branchId, forKey: "branchId")
+        
+        do {
+            try seedMOC.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+    }
 }

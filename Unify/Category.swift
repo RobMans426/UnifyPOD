@@ -13,6 +13,8 @@ class Category : NSObject {
     
     var id : String?
     var label : String?
+    var url : String?
+    
     var categories : Array<Category>?
     //var content : Array<Content>?
     var content : Content?
@@ -25,8 +27,9 @@ class Category : NSObject {
     
     fileprivate func loadFromJSON( _ json: JSON ) {
         
-        self.label = json["label"].string!
+        self.label = json["label"].string
         self.id = json["id"].string
+        self.url = json["content"]["url"].string
         
         if let catArray = json["children"].array {
             

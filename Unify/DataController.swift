@@ -26,19 +26,21 @@ class DataController: NSObject {
         managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = psc
 
-        DispatchQueue.global(qos: DispatchQoS.background.qosClass).async {
+//        DispatchQueue.global(qos: DispatchQoS.background.qosClass).async {
             let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             let docURL = urls[urls.endIndex-1]
             /* The directory the application uses to store the Core Data store file.
              This code uses a file named "DataModel.sqlite" in the application's documents directory.
              */
-            let storeURL = docURL.appendingPathComponent("AnalyticsDataModel.sqlite")
-            do {
-                try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
-            } catch {
-                fatalError("Error migrating store: \(error)")
-            }
+                let storeURL = docURL.appendingPathComponent("AnalyticsDataModel.sqlite")
+                do {
+                    try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
+                } catch {
+                    fatalError("Error migrating store: \(error)")
+                }
+            
 
-        }
+
+//        }
     }
 }

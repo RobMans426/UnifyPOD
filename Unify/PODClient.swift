@@ -116,6 +116,22 @@ class PODClient : NSObject,  URLSessionDelegate {
         
         task.resume()
         
+        self.sendHitDetails { (success) in
+            self.clearCoreData()
+            debugPrint("Hits Sent to API!")
+        }
+        
+        self.sendDocsEmailed { (success) in
+            self.clearCoreEmailedData()
+            debugPrint("Emailed Docs Sent to API!")
+        }
+        
+        self.sendDocsPrinted { (success) in
+            self.clearCorePrintedData()
+            debugPrint("Printed Docs Sent to API!")
+        }
+
+        
     }
     
     func loadVideo( branchId:String,  completion:@escaping (_ completed:Bool) -> Void  ) {
@@ -473,9 +489,6 @@ class PODClient : NSObject,  URLSessionDelegate {
             
             task.resume()
             
-            
-            
-       
     }
 
     

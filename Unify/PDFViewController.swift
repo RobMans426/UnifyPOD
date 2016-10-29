@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate {
     
@@ -22,12 +23,14 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
     
     @IBOutlet weak var webView: UIWebView!
     
-    var pdfURL : URL?
-    var content : Category?
-    
+    var pdfURL: URL?
+    var content: Category?
+    var category: Content?
     var blurView: UIVisualEffectView?
     
+    // ****** for getting google analytics trackers ******
     
+    // PDF name
     override func getGAIName() -> String? {
         
         if (content?.label != nil) {
@@ -39,6 +42,26 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
         
     }
     
+    // PDF id
+    override func getGAIid() -> String? {
+        
+        if (content?.id != nil) {
+            return content!.id!
+        } else{
+            return nil
+        }
+    }
+    
+    // PDF url
+    override func getGAIUrl() -> String? {
+        
+        if (content?.url != nil) {
+            return content!.url!
+        } else{
+            return nil
+        }
+    }
+    
     override func viewDidLoad() {
         
         setupButtons()
@@ -47,6 +70,8 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
         webView.scalesPageToFit = true
         webView.loadRequest( request )
     }
+    
+    // ********************************************************
     
     func setupButtons() {
         
@@ -66,7 +91,6 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
         
         
         if( button == self.printButton ) {
-            
             
             printView.backgroundColor = UIColor(red: 82/255, green: 195/255, blue: 237/255, alpha: 1)
             printImage.image = UIImage(named: "printer_over")
@@ -138,6 +162,9 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
             
         self.present(vc, animated: true, completion: {})
         
+        // add to EmailDocs entity
+        self.seedEmails(id: Int(self.getGAIid()!), name: self.getGAIName(), url: self.getGAIUrl(), branchId: settingControl.getRegionCode())
+        
         self.buttonUnselected( emailButton )
     }
     
@@ -195,6 +222,8 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
                 self.present(vc, animated: true, completion: {})
             })
             
+            // add to PrintedDocs entity
+            self.seedPrints(id: Int(self.getGAIid()!), name: self.getGAIName(), url: self.getGAIUrl(), branchId: settingControl.getRegionCode())
             self.buttonUnselected( printButton )
             
         } else {
@@ -215,5 +244,40 @@ class PDFViewController : BaseViewController, UIPrinterPickerControllerDelegate 
         }
     }
     
+    func seedPrints(id: Int!,name: String!, url: String!, branchId: String!) {
+        
+        let seedMOC = DataController().managedObjectContext
+        let entityPrint = NSEntityDescription.insertNewObject(forEntityName: "PrintedDocs", into: seedMOC) as! PrintedDocs
+        
+        
+        entityPrint.setValue(id, forKey: "id")
+        entityPrint.setValue(name, forKey: "documentName")
+        entityPrint.setValue(url, forKey: "documentURL")
+        entityPrint.setValue(branchId, forKey: "branchId")
+        
+        do {
+            try seedMOC.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+    }
+    
+    func seedEmails(id: Int!,name: String!, url: String!, branchId: String!) {
+        
+        let seedMOC = DataController().managedObjectContext
+        let entityEmails = NSEntityDescription.insertNewObject(forEntityName: "EmailedDocs", into: seedMOC) as! EmailedDocs
+        
+        
+        entityEmails.setValue(id, forKey: "id")
+        entityEmails.setValue(name, forKey: "documentName")
+        entityEmails.setValue(url, forKey: "documentURL")
+        entityEmails.setValue(branchId, forKey: "branchId")
+        
+        do {
+            try seedMOC.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+    }
     
 }
